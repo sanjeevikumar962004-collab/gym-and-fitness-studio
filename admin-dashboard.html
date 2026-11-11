@@ -3,6 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        (function () {
+            try {
+                var user = JSON.parse(localStorage.getItem('stackly_user'));
+                if (!user || user.role !== 'admin') {
+                    window.location.replace('login.html');
+                }
+            } catch (e) {
+                window.location.replace('login.html');
+            }
+        })();
+    </script>
     <title>Admin &amp; Head Coach Operations Console — Stackly Fitness Salem</title>
     <meta name="description" content="Salem flagship gym operations, athlete roster management, InBody biometric review, coach queues, and RFID turnstile security for Stackly Fitness.">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -131,7 +143,7 @@ body {
                 </button>
 
                 <button onclick="switchAdminTab('loans')" id="adm-btn-loans" class="adm-tab-btn w-full flex items-center gap-3.5 px-4 py-3 rounded-2xl text-sm font-semibold transition text-left text-gray-400 hover:bg-white/5 hover:text-white group">
-                    <i class="fa-solid fa-sports-martial-arts text-base w-5 text-center transition"></i>
+                    <i class="fa-solid fa-user-clock text-base w-5 text-center transition"></i>
                     <span class="flex-1">1:1 Coaching Queue</span>
                     <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-300">14</span>
                 </button>
@@ -172,16 +184,16 @@ body {
     <div id="adminContentWrapper" class="flex-1 flex flex-col transition-all duration-300 ease-in-out lg:pl-72">
         
         <!-- Sticky Top Navigation Header -->
-        <header class="sticky top-0 z-30 bg-[#131313]/90 backdrop-blur-md border-b border-white/10 px-4 sm:px-8 py-3 flex items-center justify-between gap-4">
+        <header class="sticky top-0 z-30 bg-[#131313]/90 backdrop-blur-md border-b border-white/10 px-2.5 sm:px-8 py-2.5 sm:py-3 flex items-center justify-between gap-2 sm:gap-4">
             
-            <div class="flex items-center gap-3 min-w-0 flex-1">
-                <button onclick="toggleAdminMobileSidebar(true)" class="lg:hidden p-2 rounded-xl bg-surface-high border border-white/10 text-white hover:bg-surface-highest flex items-center justify-center transition" aria-label="Open admin menu">
-                    <i class="fa-solid fa-bars text-sm"></i>
+            <div class="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
+                <button onclick="toggleAdminMobileSidebar(true)" class="lg:hidden p-1.5 sm:p-2 rounded-xl bg-surface-high border border-white/10 text-white hover:bg-surface-highest flex items-center justify-center transition shrink-0" aria-label="Open admin menu">
+                    <i class="fa-solid fa-bars text-xs sm:text-sm"></i>
                 </button>
 
-                <a href="javascript:void(0)" onclick="switchAdminTab('overview')" class="lg:hidden flex items-center gap-2 flex-shrink-0" title="Console Overview">
-                    <img src="stackly logo.webp" alt="Stackly" class="h-6 w-auto orange-logo-filter">
-                    <span class="font-headline text-base uppercase tracking-wider text-white">STACKLY CONSOLE</span>
+                <a href="javascript:void(0)" onclick="switchAdminTab('overview')" class="lg:hidden flex items-center gap-1.5 sm:gap-2 min-w-0" title="Console Overview">
+                    <img src="stackly logo.webp" alt="Stackly" class="h-5 sm:h-6 w-auto orange-logo-filter shrink-0">
+                    <span class="font-headline text-xs sm:text-base uppercase tracking-wider text-white truncate max-w-[120px] sm:max-w-none">STACKLY CONSOLE</span>
                 </a>
 
                 <div class="hidden sm:flex items-center gap-2">
@@ -194,9 +206,9 @@ body {
             </div>
 
             <!-- Right Profile Pill -->
-            <div class="flex items-center gap-3 flex-shrink-0">
-                <div class="flex items-center gap-2.5 bg-surface-high border border-white/10 rounded-full py-1 px-3">
-                    <div class="w-6 h-6 rounded-full bg-primary-container text-white flex items-center justify-center text-[10px] font-bold">
+            <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+                <div class="flex items-center gap-1.5 sm:gap-2.5 bg-surface-high border border-white/10 rounded-full py-1 px-2 sm:px-3">
+                    <div class="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-primary-container text-white flex items-center justify-center text-[9px] sm:text-[10px] font-bold shrink-0">
                         <i class="fa-solid fa-shield-halved"></i>
                     </div>
                     <span class="text-xs font-bold hidden sm:inline-block admin-display-name text-white">Super Admin</span>
@@ -236,20 +248,20 @@ body {
             </div>
 
             <!-- Mobile Secondary Admin Tab Bar -->
-            <div class="lg:hidden flex items-center gap-2 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0">
-                <button onclick="switchAdminTab('overview')" id="mobile-adm-overview" class="mobile-adm-tab-btn active-admin-tab px-4 py-2.5 rounded-xl font-bold text-xs whitespace-nowrap transition flex items-center gap-1.5 bg-primary-container text-white">
+            <div class="lg:hidden flex items-center gap-1.5 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 no-scrollbar touch-pan-x">
+                <button onclick="switchAdminTab('overview')" id="mobile-adm-overview" class="mobile-adm-tab-btn active-admin-tab px-3 py-2 rounded-xl font-bold text-xs whitespace-nowrap transition flex items-center gap-1.5 bg-primary-container text-white shrink-0">
                     <i class="fa-solid fa-gauge-high"></i> Overview
                 </button>
-                <button onclick="switchAdminTab('kyc')" id="mobile-adm-kyc" class="mobile-adm-tab-btn px-4 py-2.5 rounded-xl font-bold text-xs whitespace-nowrap transition flex items-center gap-1.5 text-gray-400 bg-surface-high border border-white/10">
+                <button onclick="switchAdminTab('kyc')" id="mobile-adm-kyc" class="mobile-adm-tab-btn px-3 py-2 rounded-xl font-bold text-xs whitespace-nowrap transition flex items-center gap-1.5 text-gray-400 bg-surface-high border border-white/10 shrink-0">
                     <i class="fa-solid fa-id-card"></i> Athlete Roster
                 </button>
-                <button onclick="switchAdminTab('loans')" id="mobile-adm-loans" class="mobile-adm-tab-btn px-4 py-2.5 rounded-xl font-bold text-xs whitespace-nowrap transition flex items-center gap-1.5 text-gray-400 bg-surface-high border border-white/10">
-                    <i class="fa-solid fa-sports-martial-arts"></i> Coach Queue
+                <button onclick="switchAdminTab('loans')" id="mobile-adm-loans" class="mobile-adm-tab-btn px-3 py-2 rounded-xl font-bold text-xs whitespace-nowrap transition flex items-center gap-1.5 text-gray-400 bg-surface-high border border-white/10 shrink-0">
+                    <i class="fa-solid fa-user-clock"></i> Coach Queue
                 </button>
-                <button onclick="switchAdminTab('audit')" id="mobile-adm-audit" class="mobile-adm-tab-btn px-4 py-2.5 rounded-xl font-bold text-xs whitespace-nowrap transition flex items-center gap-1.5 text-gray-400 bg-surface-high border border-white/10">
+                <button onclick="switchAdminTab('audit')" id="mobile-adm-audit" class="mobile-adm-tab-btn px-3 py-2 rounded-xl font-bold text-xs whitespace-nowrap transition flex items-center gap-1.5 text-gray-400 bg-surface-high border border-white/10 shrink-0">
                     <i class="fa-solid fa-shield-halved"></i> Turnstiles
                 </button>
-                <button onclick="switchAdminTab('settings')" id="mobile-adm-settings" class="mobile-adm-tab-btn px-4 py-2.5 rounded-xl font-bold text-xs whitespace-nowrap transition flex items-center gap-1.5 text-gray-400 bg-surface-high border border-white/10">
+                <button onclick="switchAdminTab('settings')" id="mobile-adm-settings" class="mobile-adm-tab-btn px-3 py-2 rounded-xl font-bold text-xs whitespace-nowrap transition flex items-center gap-1.5 text-gray-400 bg-surface-high border border-white/10 shrink-0">
                     <i class="fa-solid fa-sliders"></i> Settings
                 </button>
             </div>

@@ -470,28 +470,23 @@
 
             let currentUser = JSON.parse(localStorage.getItem('stackly_user') || 'null');
 
-            // Provide sensible defaults if storage is empty
+            // Enforce Strict Authentication Guard on Dashboards
             if (!currentUser) {
-                if (isAdminDash) {
-                    currentUser = {
-                        name: 'Super Admin',
-                        email: 'admin@testackly.com',
-                        role: 'admin',
-                        roleTitle: 'Chief Compliance Officer & System Administrator',
-                        node: 'Compliance Node #1'
-                    };
-                } else {
-                    currentUser = {
-                        name: 'Alex Morgan',
-                        email: 'alex.morgan@testackly.com',
-                        role: 'user',
-                        tier: 'Personal Premier',
-                        accountNumber: '4592 8821 3491 4902',
-                        shortAccount: '****4902',
-                        balance: 128450.00
-                    };
+                if (isUserDash || isAdminDash) {
+                    window.location.replace('login.html');
+                    return;
                 }
-                localStorage.setItem('stackly_user', JSON.stringify(currentUser));
+                return; // On public pages, do not fabricate default user
+            }
+
+            // Role verification guard
+            if (isUserDash && currentUser.role !== 'user') {
+                window.location.replace('login.html');
+                return;
+            }
+            if (isAdminDash && currentUser.role !== 'admin') {
+                window.location.replace('login.html');
+                return;
             }
 
             // 1. Sync User Dashboard elements

@@ -3,6 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        (function () {
+            try {
+                var user = JSON.parse(localStorage.getItem('stackly_user'));
+                if (!user || user.role !== 'user') {
+                    window.location.replace('login.html');
+                }
+            } catch (e) {
+                window.location.replace('login.html');
+            }
+        })();
+    </script>
     <title>Athlete Portal & Smart RFID Pass — Stackly Fitness Salem</title>
     <meta name="description" content="Manage your Stackly Fitness Salem athletic membership, track InBody biometrics, book 1:1 coaching slots, and access your digital RFID gym keycard.">
     <script src="https://cdn.tailwindcss.com"></script>
