@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Member & Athlete Login | Stackly Fitness Salem</title>
+    <meta name="description" content="Sign in to your Stackly Fitness athlete portal. Access biometric InBody analytics, book coaching slots, view RFID keycards, and manage club memberships in Salem."/>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+    <link href="style.css" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        tertiary: "#ffb596",
+                        "inverse-primary": "#aa3600",
+                        "inverse-on-surface": "#313030",
+                        "primary-fixed": "#ffdbcf",
+                        "surface-bright": "#3a3939",
+                        surface: "#131313",
+                        "on-surface": "#e5e2e1",
+                        "primary-container": "#ff5708",
+                        background: "#131313",
+                        "on-tertiary-container": "#4d1900",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "on-secondary": "#2f3131",
+                        "on-tertiary-fixed": "#360f00",
+                        "surface-container-high": "#2a2a2a",
+                        "on-primary-fixed-variant": "#822700",
+                        "secondary-fixed": "#e2e2e2",
+                        "on-primary": "#5c1900",
+                        "on-tertiary": "#581e00",
+                        "surface-dim": "#131313",
+                        "on-surface-variant": "#e5beb2",
+                        "tertiary-container": "#ec6926",
+                        "on-secondary-fixed-variant": "#454747",
+                        "on-secondary-fixed": "#1a1c1c",
+                        primary: "#ffb59c",
+                        "secondary-container": "#454747",
+                        "inverse-surface": "#e5e2e1",
+                        outline: "#ac897e",
+                        "on-primary-container": "#511500",
+                        "tertiary-fixed": "#ffdbcd",
+                        "on-error": "#690005",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "surface-container-low": "#1c1b1b",
+                        "surface-tint": "#ffb59c",
+                        "surface-variant": "#353534",
+                        "surface-container": "#201f1f",
+                        error: "#ffb4ab",
+                        "error-container": "#93000a",
+                        "tertiary-fixed-dim": "#ffb596",
+                        secondary: "#c6c6c7",
+                        "surface-container-highest": "#353534",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed-dim": "#ffb59c",
+                        "on-secondary-container": "#b4b5b5",
+                        "outline-variant": "#5c4037",
+                        "on-primary-fixed": "#390c00",
+                        "on-background": "#e5e2e1",
+                        dark: "#0e0e0e",
+                        "surface-low": "#1c1b1b",
+                        "surface-high": "#252424",
+                        "surface-highest": "#333232",
+                        borderc: "rgba(255, 255, 255, 0.08)"
+                    },
+                    borderRadius: {
+                        DEFAULT: "1rem",
+                        lg: "2rem",
+                        xl: "3rem",
+                        full: "9999px"
+                    },
+                    spacing: {
+                        "space-sm": "0.5rem",
+                        "space-xs": "0.25rem",
+                        "space-2xl": "4rem",
+                        "space-xl": "2.5rem",
+                        margin: "3rem",
+                        "space-lg": "1.5rem",
+                        "margin-sm": "1.25rem",
+                        "space-md": "1rem",
+                        "gutter-sm": "1rem",
+                        gutter: "1.5rem"
+                    },
+                    fontFamily: {
+                        "headline-md": ["Bebas Neue", "sans-serif"],
+                        "headline-lg": ["Bebas Neue", "sans-serif"],
+                        "headline-xl": ["Bebas Neue", "sans-serif"],
+                        "display-hero": ["Bebas Neue", "sans-serif"],
+                        "title-md": ["Inter", "sans-serif"],
+                        "title-lg": ["Inter", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"],
+                        "body-lg": ["Inter", "sans-serif"],
+                        "body-sm": ["Inter", "sans-serif"],
+                        "label-md": ["Inter", "sans-serif"],
+                        "label-caps": ["Inter", "sans-serif"],
+                        "display-hero-mobile": ["Bebas Neue", "sans-serif"],
+                        headline: ["Bebas Neue", "sans-serif"],
+                        sans: ["Inter", "sans-serif"]
+                    },
+                    fontSize: {
+                        "title-md": ["16px", { lineHeight: "24px", fontWeight: "600" }],
+                        "headline-md": ["28px", { lineHeight: "32px", letterSpacing: "0.02em", fontWeight: "400" }],
+                        "display-hero": ["96px", { lineHeight: "92px", letterSpacing: "0.04em", fontWeight: "400" }],
+                        "body-md": ["15px", { lineHeight: "24px", fontWeight: "400" }],
+                        "headline-xl-mobile": ["40px", { lineHeight: "42px", letterSpacing: "0.02em", fontWeight: "400" }],
+                        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+                        "body-sm": ["13px", { lineHeight: "20px", fontWeight: "400" }],
+                        "headline-lg": ["36px", { lineHeight: "40px", letterSpacing: "0.02em", fontWeight: "400" }],
+                        "headline-xl": ["64px", { lineHeight: "64px", letterSpacing: "0.03em", fontWeight: "400" }],
+                        "label-md": ["13px", { lineHeight: "18px", letterSpacing: "0.02em", fontWeight: "600" }],
+                        "label-caps": ["11px", { lineHeight: "16px", letterSpacing: "0.12em", fontWeight: "700" }],
+                        "display-hero-mobile": ["56px", { lineHeight: "56px", letterSpacing: "0.03em", fontWeight: "400" }],
+                        "title-lg": ["20px", { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "700" }]
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto !important;
+  scroll-behavior: smooth;
+  width: 100%;
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: visible !important;
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0e0e0e;
+}
+::-webkit-scrollbar-thumb {
+  background: #353534;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 87, 8, 0.3);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ff5708;
+  box-shadow: 0 0 8px rgba(255, 87, 8, 0.8);
+}
+.orange-logo-filter {
+  filter: brightness(0) saturate(100%) invert(48%) sepia(98%) saturate(2400%) hue-rotate(360deg) brightness(102%) contrast(105%) drop-shadow(0 0 8px rgba(255,87,8,0.6));
+}
+</style>
+</head>
+<body class="bg-background font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col justify-between">
+
+    <!-- Top Utility & Main Header Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-surface/85 backdrop-blur-xl shadow-[0_4px_24px_rgba(0,0,0,0.4)] border-b border-white/5">
+        <div class="hidden sm:block bg-surface-container-lowest border-b border-white/5">
+            <div class="max-w-7xl mx-auto px-4 sm:px-8 flex items-center justify-between h-9 text-xs">
+                <div class="flex items-center gap-6">
+                    <span class="flex items-center gap-1.5 text-on-surface-variant font-label-caps text-label-caps uppercase tracking-wider">
+                        <span class="material-symbols-outlined text-[14px] text-primary-container">location_on</span>MMR Complex, Salem, TN
+                    </span>
+                    <span class="hidden sm:flex items-center gap-1.5 text-on-surface-variant font-label-caps text-label-caps uppercase tracking-wider">
+                        <span class="material-symbols-outlined text-[14px] text-primary-container">schedule</span>Mon-Sat: 5:00 AM - 10:30 PM | Sun: 6:00 AM - 8:00 PM
+                    </span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a class="flex items-center gap-1.5 text-on-surface-variant hover:text-primary font-label-caps text-label-caps uppercase tracking-wider transition-colors" href="tel:+914272445566">
+                        <span class="material-symbols-outlined text-[14px] text-primary-container">call</span>+91 (0427) 244-5566
+                    </a>
+                    <div class="hidden md:flex items-center gap-1.5 pl-3 border-l border-white/10">
+                        <span class="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse"></span>
+                        <span class="text-on-surface font-label-caps text-label-caps tracking-widest text-[10px] uppercase">Flagship Club Open</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="h-20 max-w-7xl mx-auto px-4 sm:px-8 flex items-center justify-between">
+            <a class="flex items-center gap-3 group" href="index.html" aria-label="Stackly Fitness Home">
+                <div class="h-10 px-2.5 py-1 rounded-xl bg-surface-container-high/80 border border-primary-container/40 flex items-center justify-center shadow-[0_0_20px_rgba(255,87,8,0.25)] group-hover:border-primary-container group-hover:scale-105 transition-all duration-300">
+                    <img src="stackly logo.webp" alt="Stackly Logo" class="h-7 w-auto object-contain orange-logo-filter"/>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-headline-md text-headline-md tracking-wider uppercase text-on-surface leading-none group-hover:text-primary transition-colors">STACKLY</span>
+                    <span class="font-label-caps text-label-caps text-primary tracking-[0.25em] uppercase leading-none mt-1">FITNESS • SALEM</span>
+                </div>
+            </a>
+
+            <nav class="hidden lg:flex items-center gap-1">
+                <a class="px-4 py-2 rounded-full font-title-md text-title-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" href="index.html">Home</a>
+                <a class="px-4 py-2 rounded-full font-title-md text-title-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" href="about.html">About Us</a>
+                <a class="px-4 py-2 rounded-full font-title-md text-title-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" href="program.html">Programs</a>
+                <a class="px-4 py-2 rounded-full font-title-md text-title-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" href="membership.html">Membership</a>
+                <a class="px-4 py-2 rounded-full font-title-md text-title-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" href="contact.html">Contact</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <a aria-current="page" class="hidden sm:flex items-center gap-2 px-4 py-2.5 rounded-full bg-surface-container-high text-primary border border-primary-container/40 font-label-md text-label-md transition-colors shadow-sm" href="login.html">
+                    <span class="material-symbols-outlined text-[18px] text-primary">account_circle</span>
+                    <span>Member Portal</span>
+                </a>
+                <a class="hidden min-[420px]:flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-2.5 rounded-full bg-primary-container hover:bg-tertiary-container text-on-primary-container font-label-md text-label-md uppercase tracking-wider font-bold shadow-[0_0_24px_rgba(255,87,8,0.3)] transition-all hover:scale-[1.02] active:scale-[0.98]" href="signup.html">
+                    <span>JOIN NOW</span>
+                    <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                </a>
+                <button type="button" class="lg:hidden p-2.5 rounded-full bg-surface-container-high text-on-surface hover:text-primary focus:outline-none" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')" aria-label="Toggle Navigation Menu">
+                    <span class="material-symbols-outlined text-[24px]">menu</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-surface-container-lowest/95 backdrop-blur-2xl border-t border-white/10 px-6 py-4 space-y-2">
+            <a class="block px-4 py-2.5 rounded-xl text-on-surface hover:bg-surface-container-high font-title-md" href="index.html">Home</a>
+            <a class="block px-4 py-2.5 rounded-xl text-on-surface hover:bg-surface-container-high font-title-md" href="about.html">About Us</a>
+            <a class="block px-4 py-2.5 rounded-xl text-on-surface hover:bg-surface-container-high font-title-md" href="program.html">Programs</a>
+            <a class="block px-4 py-2.5 rounded-xl text-on-surface hover:bg-surface-container-high font-title-md" href="membership.html">Membership</a>
+            <a class="block px-4 py-2.5 rounded-xl text-on-surface hover:bg-surface-container-high font-title-md" href="contact.html">Contact</a>
+            <div class="pt-3 border-t border-white/10 flex flex-col gap-2">
+                <a class="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-surface-container-high text-primary font-label-md font-semibold" href="login.html">
+                    <span class="material-symbols-outlined text-[18px]">account_circle</span>
+                    <span>Member Portal</span>
+                </a>
+                <a class="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-primary-container text-on-primary-container font-label-md font-bold uppercase tracking-wider" href="signup.html">
+                    <span>JOIN NOW</span>
+                    <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 w-full pt-32 pb-16 flex items-center justify-center relative overflow-hidden">
+        <!-- Ambient Orange Light Spots -->
+        <div class="absolute -top-32 left-1/4 w-[600px] h-[600px] bg-primary-container/10 rounded-full blur-[140px] pointer-events-none"></div>
+        <div class="absolute bottom-0 right-10 w-[500px] h-[500px] bg-tertiary-container/10 rounded-full blur-[160px] pointer-events-none"></div>
+
+        <div class="max-w-6xl w-full mx-auto px-4 sm:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                
+                <!-- Left Column: Gym Experience & Athlete Perks -->
+                <div class="lg:col-span-5 flex flex-col justify-between p-4 sm:p-8 md:p-10 rounded-3xl bg-surface-container-low border border-white/10 shadow-2xl relative overflow-hidden">
+                    <div class="space-y-6">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface-container-high border border-primary-container/30 text-primary font-label-caps text-label-caps uppercase tracking-wider">
+                            <span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+                            <span>Salem Apex Conditioning Hub</span>
+                        </div>
+
+                        <div>
+                            <h1 class="font-headline-xl text-headline-xl text-on-surface uppercase tracking-tight leading-none">
+                                WELCOME BACK, <span class="text-primary-container">ATHLETE.</span>
+                            </h1>
+                            <p class="font-body-md text-body-md text-on-surface-variant mt-3 leading-relaxed">
+                                Enter your credentials to access your biometric health dashboard, manage daily club check-ins, and schedule master coaching sessions.
+                            </p>
+                        </div>
+
+                        <!-- Athletic Perks Feature List -->
+                        <div class="space-y-4 pt-2">
+                            <div class="flex items-start gap-3.5 p-3.5 rounded-2xl bg-surface-container/60 border border-white/5">
+                                <div class="w-10 h-10 rounded-xl bg-primary-container/20 text-primary-container flex items-center justify-center shrink-0">
+                                    <span class="material-symbols-outlined text-[20px]">monitor_heart</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-title-md text-sm font-semibold text-on-surface">InBody 770 Biometric Sync</h4>
+                                    <p class="font-body-sm text-xs text-on-surface-variant">Real-time body composition, visceral fat and lean mass tracking.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3.5 p-3.5 rounded-2xl bg-surface-container/60 border border-white/5">
+                                <div class="w-10 h-10 rounded-xl bg-primary-container/20 text-primary-container flex items-center justify-center shrink-0">
+                                    <span class="material-symbols-outlined text-[20px]">contactless</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-title-md text-sm font-semibold text-on-surface">Digital RFID Turnstile Keycard</h4>
+                                    <p class="font-body-sm text-xs text-on-surface-variant">Instant NFC smartphone tap for Salem MMR Complex arena gate access.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3.5 p-3.5 rounded-2xl bg-surface-container/60 border border-white/5">
+                                <div class="w-10 h-10 rounded-xl bg-primary-container/20 text-primary-container flex items-center justify-center shrink-0">
+                                    <span class="material-symbols-outlined text-[20px]">fitness_center</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-title-md text-sm font-semibold text-on-surface">1:1 Master Coach & Class Booking</h4>
+                                    <p class="font-body-sm text-xs text-on-surface-variant">Reserve Olympic lifting platforms, HIIT labs & cryo recovery slots.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Left Column Footer note -->
+                    <div class="mt-8 pt-6 border-t border-white/10 flex items-center justify-between text-xs text-on-surface-variant">
+                        <span>Need front desk assistance?</span>
+                        <a href="contact.html" class="text-primary hover:text-primary-container transition-colors font-semibold uppercase tracking-wider">Contact Concierge &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Right Column: Login Card & Form -->
+                <div class="lg:col-span-7">
+                    <div class="p-4 sm:p-8 md:p-12 rounded-3xl bg-surface-container-low border border-white/10 shadow-2xl relative">
+                        
+                        <!-- Header inside form card -->
+                        <div class="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <div>
+                                <span class="font-label-caps text-label-caps text-primary uppercase tracking-widest block mb-1">SECURE ACCESS PORTAL</span>
+                                <h2 class="font-headline-lg text-headline-lg text-on-surface uppercase tracking-wide">SIGN IN TO STACKLY</h2>
+                            </div>
+                            <!-- Small logo badge -->
+                            <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-surface-container border border-primary-container/30">
+                                <img src="stackly logo.webp" alt="Stackly" class="h-5 w-auto orange-logo-filter"/>
+                                <span class="font-label-caps text-[10px] text-primary tracking-wider uppercase">Verified Portal</span>
+                            </div>
+                        </div>
+
+                        <!-- 1-Click Demo Credentials Filler Buttons -->
+                        <div class="p-4 rounded-2xl bg-surface-container border border-white/10 mb-6 space-y-2">
+                            <span class="text-xs font-label-caps uppercase tracking-wider text-on-surface-variant block">Quick Demo Login (1-Click Fill):</span>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                                <button type="button" onclick="fillDemoCredentials('user')" class="px-4 py-2.5 rounded-xl bg-surface-container-high hover:bg-surface-container-highest border border-white/10 text-on-surface text-xs font-semibold uppercase tracking-wider transition flex items-center justify-center gap-2 hover:border-primary">
+                                    <span class="material-symbols-outlined text-[16px] text-primary">person</span>
+                                    <span>Demo Athlete Login</span>
+                                </button>
+                                <button type="button" onclick="fillDemoCredentials('admin')" class="px-4 py-2.5 rounded-xl bg-surface-container-high hover:bg-surface-container-highest border border-white/10 text-on-surface text-xs font-semibold uppercase tracking-wider transition flex items-center justify-center gap-2 hover:border-primary-container">
+                                    <span class="material-symbols-outlined text-[16px] text-primary-container">shield_person</span>
+                                    <span>Demo Head Coach / Admin</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Main Login Form (Validated by validation.js) -->
+                        <form id="loginForm" class="space-y-5" novalidate>
+                            
+                            <!-- Role Selection (User / Admin) -->
+                            <div class="form-group">
+                                <label for="loginRole" class="block font-label-caps text-label-caps uppercase text-on-surface-variant mb-1.5">
+                                    Account Clearance Role <span class="text-primary-container">*</span>
+                                </label>
+                                <div class="relative">
+                                    <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-[20px]">badge</span>
+                                    <select id="loginRole" name="role" class="w-full bg-surface-container text-on-surface pl-12 pr-10 py-3.5 rounded-2xl font-body-md text-sm border border-white/10 focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition appearance-none cursor-pointer">
+                                        <option value="user" selected>Athlete / Club Member Portal</option>
+                                        <option value="admin">Operations Admin / Head Coach Console</option>
+                                    </select>
+                                    <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">arrow_drop_down</span>
+                                </div>
+                            </div>
+
+                            <!-- Email Address -->
+                            <div class="form-group">
+                                <label for="loginEmail" class="block font-label-caps text-label-caps uppercase text-on-surface-variant mb-1.5">
+                                    Registered Email Address <span class="text-primary-container">*</span>
+                                </label>
+                                <div class="relative">
+                                    <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-[20px]">mail</span>
+                                    <input type="email" id="loginEmail" name="email" required placeholder="alex.morgan@testackly.com" 
+                                        class="w-full bg-surface-container text-on-surface placeholder:text-outline/60 pl-12 pr-4 py-3.5 rounded-2xl font-body-md text-sm border border-white/10 focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition"/>
+                                </div>
+                            </div>
+
+                            <!-- Password -->
+                            <div class="form-group">
+                                <div class="flex items-center justify-between mb-1.5">
+                                    <label for="loginPassword" class="font-label-caps text-label-caps uppercase text-on-surface-variant">
+                                        Password <span class="text-primary-container">*</span>
+                                    </label>
+                                    <a href="404.html" onclick="window.showToast('Please contact MMR Complex front desk to reset your club PIN.', 'info'); return false;" class="text-xs text-primary hover:underline">Forgot Password?</a>
+                                </div>
+                                <div class="relative">
+                                    <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-[20px]">lock</span>
+                                    <input type="password" id="loginPassword" name="password" required placeholder="Enter your password" 
+                                        class="w-full bg-surface-container text-on-surface placeholder:text-outline/60 pl-12 pr-12 py-3.5 rounded-2xl font-body-md text-sm border border-white/10 focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition"/>
+                                    <button type="button" onclick="togglePasswordVisibility('loginPassword', 'eyeToggleIcon')" class="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-white transition">
+                                        <i id="eyeToggleIcon" class="fa-regular fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Remember Device & Agreement -->
+                            <div class="flex items-center justify-between pt-1">
+                                <label class="flex items-center gap-2 cursor-pointer font-body-sm text-xs text-on-surface-variant">
+                                    <input type="checkbox" checked class="w-4 h-4 rounded accent-primary-container bg-surface-container border-white/10"/>
+                                    <span>Keep me signed in on this device</span>
+                                </label>
+                                <span class="text-[11px] text-on-surface-variant/70">256-bit SSL</span>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="pt-2">
+                                <button type="submit" class="w-full py-4 rounded-2xl bg-primary-container hover:bg-tertiary-container text-on-primary-container font-headline-md text-headline-md tracking-wider uppercase transition-all duration-200 hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-2 shadow-[0_0_32px_rgba(255,87,8,0.35)] font-bold">
+                                    <span>SIGN IN TO PORTAL</span>
+                                    <span class="material-symbols-outlined text-[20px]">login</span>
+                                </button>
+                            </div>
+                        </form>
+
+                        <!-- Sign up link -->
+                        <div class="mt-8 pt-6 border-t border-white/10 text-center">
+                            <p class="font-body-md text-sm text-on-surface-variant">
+                                Don't have a gym membership yet? 
+                                <a href="signup.html" class="text-primary hover:text-primary-container font-semibold transition-colors underline ml-1">
+                                    Apply for Membership &rarr;
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Global Standard Footer -->
+    <footer class="w-full bg-surface-container-lowest text-on-surface pt-12 pb-8 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-white/5">
+                <a class="flex items-center gap-3" href="index.html">
+                    <div class="h-9 px-2 py-1 rounded-xl bg-surface-container border border-primary-container/30 flex items-center justify-center">
+                        <img src="stackly logo.webp" alt="Stackly Logo" class="h-6 w-auto orange-logo-filter"/>
+                    </div>
+                    <span class="font-headline-md text-headline-md tracking-wider uppercase text-on-surface">STACKLY FITNESS SALEM</span>
+                </a>
+                <div class="flex items-center gap-6 font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider text-xs">
+                    <a class="hover:text-primary transition-colors" href="index.html">Home</a>
+                    <a class="hover:text-primary transition-colors" href="about.html">About</a>
+                    <a class="hover:text-primary transition-colors" href="program.html">Programs</a>
+                    <a class="hover:text-primary transition-colors" href="membership.html">Membership</a>
+                    <a class="hover:text-primary transition-colors" href="contact.html">Contact</a>
+                </div>
+            </div>
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-on-surface-variant">
+                <span>&copy; 2025 STACKLY FITNESS PVT LTD. All Rights Reserved. MMR Complex, Salem, Tamil Nadu.</span>
+                <span class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-primary-container"></span>
+                    Protected by Stackly Security Shield
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Form Validation Engine (DO NOT MODIFY validation.js) -->
+    <script src="validation.js"></script>
+</body>
+</html>
+

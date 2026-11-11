@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Athlete Portal & Smart RFID Pass — Stackly Fitness Salem</title>
+    <meta name="description" content="Manage your Stackly Fitness Salem athletic membership, track InBody biometrics, book 1:1 coaching slots, and access your digital RFID gym keycard.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    fontFamily: {
+                        headline: ['Bebas Neue', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary-container': '#ff5708',
+                        'tertiary-container': '#ec6926',
+                        primary: '#ffb59c',
+                        surface: '#131313',
+                        'surface-low': '#1c1b1b',
+                        'surface-high': '#252424',
+                        'surface-highest': '#333232',
+                        dark: '#0e0e0e',
+                        borderc: 'rgba(255, 255, 255, 0.08)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto !important;
+  scroll-behavior: smooth;
+  width: 100%;
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: visible !important;
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0e0e0e;
+}
+::-webkit-scrollbar-thumb {
+  background: #353534;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 87, 8, 0.3);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ff5708;
+  box-shadow: 0 0 8px rgba(255, 87, 8, 0.8);
+}
+.orange-logo-filter {
+  filter: brightness(0) saturate(100%) invert(48%) sepia(98%) saturate(2400%) hue-rotate(360deg) brightness(102%) contrast(105%) drop-shadow(0 0 8px rgba(255,87,8,0.6));
+}
+</style>
+</head>
+<body class="bg-[#0e0e0e] text-[#e5e2e1] font-sans min-h-screen antialiased flex flex-col selection:bg-primary-container selection:text-white overflow-x-hidden">
+
+    <!-- Mobile Drawer Backdrop Overlay -->
+    <div id="sidebarBackdrop" onclick="toggleMobileSidebar(false)" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 hidden lg:hidden opacity-0 transition-opacity duration-300"></div>
+
+    <!-- ATHLETE SIDEBAR: Responsive Left Navigation -->
+    <aside id="dashboardSidebar" class="fixed top-0 bottom-0 left-0 z-50 w-72 bg-[#131313] text-white flex flex-col justify-between transition-all duration-300 ease-in-out -translate-x-full lg:translate-x-0 border-r border-white/10 shadow-2xl">
+        
+        <!-- Sidebar Top: Brand Logo & Navigation -->
+        <div class="p-6">
+            <!-- Brand Logo & Mobile Close -->
+            <div class="flex items-center justify-between mb-8 pb-5 border-b border-white/10">
+                <a href="javascript:switchTab('overview')" class="flex items-center gap-3 group" title="Athlete Portal Overview">
+                    <div class="h-9 px-2 py-1 rounded-xl bg-surface-high border border-primary-container/40 flex items-center justify-center shadow-[0_0_15px_rgba(255,87,8,0.25)]">
+                        <img src="stackly logo.webp" alt="Stackly" class="h-6 w-auto object-contain orange-logo-filter">
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-headline text-lg tracking-wider uppercase leading-none group-hover:text-primary transition-colors">STACKLY</span>
+                        <span class="text-[10px] text-primary tracking-widest uppercase font-bold mt-0.5">ATHLETE PORTAL</span>
+                    </div>
+                </a>
+                <button onclick="toggleMobileSidebar(false)" class="lg:hidden w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 text-gray-300 hover:text-white flex items-center justify-center transition" aria-label="Close sidebar">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Quick Action: Book Master Coach / Class -->
+            <div class="mb-6 sidebar-text">
+                <button onclick="openTransferModal()" class="w-full bg-primary-container hover:bg-tertiary-container text-white py-3 px-4 rounded-2xl font-bold text-xs uppercase tracking-wider transition shadow-lg shadow-primary-container/25 flex items-center justify-center gap-2 group">
+                    <span class="material-symbols-outlined text-[18px] group-hover:rotate-45 transition-transform">bolt</span>
+                    <span>BOOK COACH / SESSION</span>
+                </button>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="space-y-1.5" role="navigation" aria-label="Athlete Navigation">
+                <button onclick="switchTab('overview')" id="tab-btn-overview" class="tab-btn active-tab w-full flex items-center gap-3.5 px-4 py-3 rounded-2xl text-sm font-semibold transition text-left group">
+                    <i class="fa-solid fa-chart-line w-5 text-center text-base transition"></i>
+                    <span class="sidebar-text">Athletic Overview</span>
+                </button>
+
+                <button onclick="switchTab('transfers')" id="tab-btn-transfers" class="tab-btn w-full flex items-center gap-3.5 px-4 py-3 rounded-2xl text-sm font-semibold transition text-left text-gray-400 hover:bg-white/5 hover:text-white group">
+                    <i class="fa-solid fa-calendar-check w-5 text-center text-base transition"></i>
+                    <span class="sidebar-text">Coaching &amp; Passes</span>
+                </button>
+
+                <button onclick="switchTab('cards')" id="tab-btn-cards" class="tab-btn w-full flex items-center gap-3.5 px-4 py-3 rounded-2xl text-sm font-semibold transition text-left text-gray-400 hover:bg-white/5 hover:text-white group">
+                    <i class="fa-solid fa-id-card-clip w-5 text-center text-base transition"></i>
+                    <span class="sidebar-text">Digital RFID Pass</span>
+                </button>
+
+                <button onclick="switchTab('settings')" id="tab-btn-settings" class="tab-btn w-full flex items-center gap-3.5 px-4 py-3 rounded-2xl text-sm font-semibold transition text-left text-gray-400 hover:bg-white/5 hover:text-white group">
+                    <i class="fa-solid fa-sliders w-5 text-center text-base transition"></i>
+                    <span class="sidebar-text">Athlete Settings</span>
+                </button>
+            </nav>
+
+
+        </div>
+
+        <!-- Sidebar Bottom: Athlete Profile Card & Sign Out -->
+        <div class="p-4 border-t border-white/10 bg-black/40 m-3 rounded-2xl">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-primary-container/20 border border-primary-container/40 flex items-center justify-center font-bold text-primary flex-shrink-0">
+                    <span class="material-symbols-outlined text-[20px]">person</span>
+                </div>
+                <div class="sidebar-text flex-1 min-w-0">
+                    <div class="text-sm font-bold truncate text-white user-display-name">Alex Morgan</div>
+                    <div class="text-[11px] text-primary truncate font-medium user-display-tier">Apex Unlimited Athlete</div>
+                    <div class="text-[10px] text-gray-400 truncate user-display-account">Pass #STK-4902-SLM</div>
+                </div>
+                <a href="login.html" onclick="localStorage.removeItem('stackly_user')" class="w-8 h-8 rounded-lg text-gray-400 hover:text-white hover:bg-white/10 flex items-center justify-center transition" title="Sign out of Athlete Portal" aria-label="Sign out">
+                    <i class="fa-solid fa-arrow-right-from-bracket text-xs"></i>
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN APP SHELL -->
+    <div id="mainContentWrapper" class="flex-1 flex flex-col transition-all duration-300 ease-in-out lg:pl-72">
+        
+        <!-- Sticky Top Navigation Header -->
+        <header class="sticky top-0 z-30 bg-[#131313]/90 backdrop-blur-md border-b border-white/10 px-4 sm:px-8 py-3 flex items-center justify-between gap-4">
+            
+            <div class="flex items-center gap-3 min-w-0 flex-1">
+                <!-- Mobile Hamburger Button -->
+                <button onclick="toggleMobileSidebar(true)" class="lg:hidden p-2 rounded-xl bg-surface-high border border-white/10 text-white hover:bg-surface-highest flex items-center justify-center transition" aria-label="Open mobile navigation">
+                    <i class="fa-solid fa-bars text-sm"></i>
+                </button>
+
+                <!-- Mobile Logo -->
+                <a href="javascript:switchTab('overview')" class="lg:hidden flex items-center gap-2 flex-shrink-0">
+                    <img src="stackly logo.webp" alt="Stackly" class="h-6 w-auto orange-logo-filter">
+                    <span class="font-headline text-base uppercase tracking-wider text-white">STACKLY</span>
+                </a>
+
+                <!-- Location & Status -->
+                <div class="hidden sm:flex items-center gap-2">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-primary-container/15 text-primary border border-primary-container/30">
+                        <span class="w-2 h-2 rounded-full bg-primary-container animate-ping"></span>
+                        <span>MMR Complex Arena &bull; Open (5:00 AM – 10:30 PM)</span>
+                    </span>
+                    <span class="hidden md:inline-block text-xs text-gray-400">&bull; Live Floor Occupancy: 64%</span>
+                </div>
+            </div>
+
+            <!-- Right: Quick Tools & Profile Pill -->
+            <div class="flex items-center gap-3 flex-shrink-0">
+                <button onclick="openTransferModal()" class="hidden md:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-primary-container hover:bg-tertiary-container text-white text-xs font-bold uppercase tracking-wider transition shadow-sm">
+                    <span class="material-symbols-outlined text-[16px]">add_circle</span>
+                    <span>Book Session</span>
+                </button>
+
+                <div class="flex items-center gap-2.5 bg-surface-high border border-white/10 rounded-full py-1 px-3">
+                    <div class="w-6 h-6 rounded-full bg-primary-container/30 text-primary flex items-center justify-center text-xs font-bold">
+                        <i class="fa-solid fa-dumbbell text-[10px]"></i>
+                    </div>
+                    <span class="text-xs font-bold hidden sm:inline-block user-display-name text-white">Alex Morgan</span>
+                    <span class="text-[10px] bg-primary-container/20 text-primary px-2 py-0.5 rounded-full font-bold user-display-tier hidden sm:inline-block">Apex Tier</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Dashboard View Container -->
+        <main class="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl w-full mx-auto space-y-6 sm:space-y-8">
+            
+            <!-- Welcome Hero Card -->
+            <div class="bg-gradient-to-r from-[#1c1b1b] via-[#131313] to-[#252424] text-white rounded-3xl p-6 sm:p-8 relative overflow-hidden shadow-2xl border border-white/10">
+                <div class="absolute -right-12 -bottom-12 w-64 h-64 bg-primary-container/15 rounded-full blur-3xl pointer-events-none"></div>
+                
+                <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    <div class="space-y-2">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-white/10 text-primary border border-white/10">
+                            <span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+                            <span>Salem Apex Conditioning Hub &bull; Active Member</span>
+                        </div>
+                        <h1 class="text-2xl sm:text-4xl font-headline font-normal tracking-wide text-white uppercase">
+                            WELCOME BACK, <span class="user-display-name text-primary">ALEX MORGAN</span>!
+                        </h1>
+                        <p class="text-xs sm:text-sm text-gray-300 max-w-xl">
+                            Your active membership at Stackly Salem MMR Complex is fully validated. You have completed <strong class="text-white">18 sessions</strong> this month with an InBody score of <strong class="text-primary">88/100</strong>.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                        <button onclick="openTransferModal()" class="bg-primary-container hover:bg-tertiary-container text-white px-5 py-3 rounded-2xl font-bold text-xs uppercase tracking-wider transition shadow-lg shadow-primary-container/30 flex items-center justify-center gap-2 group">
+                            <span class="material-symbols-outlined text-[18px]">calendar_add_on</span>
+                            <span>Book Coaching Slot</span>
+                        </button>
+                        <button onclick="switchTab('cards')" class="bg-surface-high hover:bg-surface-highest text-white px-5 py-3 rounded-2xl font-bold text-xs uppercase tracking-wider transition border border-white/10 flex items-center justify-center gap-2">
+                            <span class="material-symbols-outlined text-[18px] text-primary">badge</span>
+                            <span>RFID Keycard</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Secondary Tab Bar -->
+            <div class="lg:hidden flex items-center gap-2 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0">
+                <button onclick="switchTab('overview')" id="mobile-tab-overview" class="mobile-tab-btn active-tab px-4 py-2.5 rounded-xl font-bold text-xs whitespace-nowrap transition flex items-center gap-1.5 bg-primary-container text-white">
+                    <i class="fa-solid fa-chart-line"></i> Overview
+                </button>
+                <button onclick="switchTab('transfers')" id="mobile-tab-transfers" class="mobile-tab-btn px-4 py-2.5 rounded-xl font-bold text-xs whitespace-nowrap transition flex items-center gap-1.5 text-gray-400 bg-surface-high border border-white/10">
+                    <i class="fa-solid fa-calendar-check"></i> Coaching &amp; Passes
+                </button>
+                <button onclick="switchTab('cards')" id="mobile-tab-cards" class="mobile-tab-btn px-4 py-2.5 rounded-xl font-bold text-xs whitespace-nowrap transition flex items-center gap-1.5 text-gray-400 bg-surface-high border border-white/10">
+                    <i class="fa-solid fa-id-card-clip"></i> RFID Pass
+                </button>
+                <button onclick="switchTab('settings')" id="mobile-tab-settings" class="mobile-tab-btn px-4 py-2.5 rounded-xl font-bold text-xs whitespace-nowrap transition flex items-center gap-1.5 text-gray-400 bg-surface-high border border-white/10">
+                    <i class="fa-solid fa-sliders"></i> Settings
+                </button>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- TAB 1: OVERVIEW & ATHLETIC BIOMETRICS -->
+            <!-- ========================================== -->
+            <div id="tab-overview" class="tab-content space-y-6 sm:space-y-8">
+                
+                <!-- 4 Gym Metric Cards -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                    
+                    <div class="bg-[#131313] rounded-3xl p-4 sm:p-6 border border-white/10 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between text-gray-400 mb-3">
+                                <span class="text-xs font-bold uppercase tracking-wider">Active Plan</span>
+                                <div class="w-9 h-9 rounded-2xl bg-primary-container/20 text-primary flex items-center justify-center text-xs font-bold">
+                                    <span class="material-symbols-outlined text-[20px]">fitness_center</span>
+                                </div>
+                            </div>
+                            <div class="text-xl sm:text-2xl font-bold text-white mb-1 user-display-tier">Apex Unlimited Athlete</div>
+                        </div>
+                        <div class="text-xs text-primary flex items-center gap-1 font-bold pt-3 mt-3 border-t border-white/10">
+                            <span class="material-symbols-outlined text-[16px]">verified</span>
+                            <span>24/7 RFID Gate Access Enabled</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-[#131313] rounded-3xl p-4 sm:p-6 border border-white/10 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between text-gray-400 mb-3">
+                                <span class="text-xs font-bold uppercase tracking-wider">Workouts This Month</span>
+                                <div class="w-9 h-9 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-bold">
+                                    <span class="material-symbols-outlined text-[20px]">timer</span>
+                                </div>
+                            </div>
+                            <div class="text-xl sm:text-2xl font-bold text-white mb-1">18 Sessions / 24 Target</div>
+                        </div>
+                        <div class="text-xs text-gray-400 pt-3 mt-3 border-t border-white/10 flex items-center gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                            <span>Streak: 12 consecutive training days</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-[#131313] rounded-3xl p-4 sm:p-6 border border-white/10 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between text-gray-400 mb-3">
+                                <span class="text-xs font-bold uppercase tracking-wider">InBody 770 Diagnostic</span>
+                                <div class="w-9 h-9 rounded-2xl bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold">
+                                    <span class="material-symbols-outlined text-[20px]">monitor_heart</span>
+                                </div>
+                            </div>
+                            <div class="text-xl sm:text-2xl font-bold text-white mb-1">88 / 100 Score</div>
+                        </div>
+                        <div class="text-xs text-gray-400 pt-3 mt-3 border-t border-white/10">
+                            <span>Body Fat: 13.8% &bull; Skeletal Muscle: 37.2 kg</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-[#131313] rounded-3xl p-4 sm:p-6 border border-white/10 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between text-gray-400 mb-3">
+                                <span class="text-xs font-bold uppercase tracking-wider">Personal Coach Credits</span>
+                                <div class="w-9 h-9 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-xs font-bold">
+                                    <span class="material-symbols-outlined text-[20px]">sports_martial_arts</span>
+                                </div>
+                            </div>
+                            <div class="text-xl sm:text-2xl font-bold text-white mb-1">6 Credits Available</div>
+                        </div>
+                        <div class="text-xs text-gray-400 pt-3 mt-3 border-t border-white/10">
+                            <a href="javascript:void(0)" onclick="openTransferModal()" class="text-primary hover:underline font-bold">Book Master Coach &rarr;</a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Charts Row: Training Volume & Zone Discipline Allocation -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    
+                    <!-- Chart 1: Athletic Output & Volume -->
+                    <div class="lg:col-span-8 bg-[#131313] rounded-3xl p-4 sm:p-6 border border-white/10 shadow-sm">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-white/10 gap-3">
+                            <div>
+                                <span class="text-xs font-bold uppercase tracking-wider text-primary">Biometric Analytics</span>
+                                <h3 class="font-headline text-xl uppercase tracking-wide text-white">Cumulative Training Output &amp; Volume</h3>
+                            </div>
+                            <div class="flex items-center gap-1 bg-surface-high p-1 rounded-xl border border-white/10 text-xs">
+                                <button id="btn-tf-6m" onclick="updateUserTimeframe('6M')" class="tf-btn px-3 py-1 rounded-lg font-bold bg-primary-container text-white transition">6 Months</button>
+                                <button id="btn-tf-1y" onclick="updateUserTimeframe('1Y')" class="tf-btn px-3 py-1 rounded-lg font-bold text-gray-400 hover:text-white transition">1 Year</button>
+                            </div>
+                        </div>
+                        <div class="h-72 sm:h-80 w-full pt-4">
+                            <canvas id="userCashFlowChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Chart 2: Zone Training Discipline Breakdown -->
+                    <div class="lg:col-span-4 bg-[#131313] rounded-3xl p-4 sm:p-6 border border-white/10 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="pb-4 border-b border-white/10">
+                                <span class="text-xs font-bold uppercase tracking-wider text-primary">Discipline Matrix</span>
+                                <h3 class="font-headline text-xl uppercase tracking-wide text-white">Facility Zone Split</h3>
+                            </div>
+                            <div class="h-56 relative my-4 flex items-center justify-center">
+                                <canvas id="userAllocationChart"></canvas>
+                                <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none text-center">
+                                    <span class="text-2xl font-bold text-white">100%</span>
+                                    <span class="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Olympic Deck</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-2 pt-2 border-t border-white/10 text-xs">
+                            <div class="flex items-center justify-between">
+                                <span class="flex items-center gap-2 text-gray-300">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+                                    <span>Olympic Barbell Deck</span>
+                                </span>
+                                <span class="font-bold text-white">50%</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="flex items-center gap-2 text-gray-300">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
+                                    <span>High-Altitude HIIT Arena</span>
+                                </span>
+                                <span class="font-bold text-white">25%</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="flex items-center gap-2 text-gray-300">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                                    <span>Hydrotherapy &amp; Cryo Suite</span>
+                                </span>
+                                <span class="font-bold text-white">15%</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="flex items-center gap-2 text-gray-300">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                                    <span>1:1 Biometric Coaching</span>
+                                </span>
+                                <span class="font-bold text-white">10%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Recent Training Logs & Upcoming Scheduled Sessions -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    
+                    <!-- Recent Training Logs List -->
+                    <div class="lg:col-span-8 bg-[#131313] rounded-3xl p-4 sm:p-6 border border-white/10 shadow-sm">
+                        <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-4">
+                            <div>
+                                <span class="text-xs font-bold uppercase tracking-wider text-primary">Ledger</span>
+                                <h3 class="font-headline text-xl uppercase tracking-wide text-white">Recent Training Sessions</h3>
+                            </div>
+                            <button onclick="openTransferModal()" class="text-xs text-primary hover:underline font-bold">Log Session +</button>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 rounded-2xl bg-surface-high border border-white/5">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-xl bg-primary-container/20 text-primary flex items-center justify-center font-bold">
+                                        <i class="fa-solid fa-dumbbell"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-sm font-bold text-white">Heavy Deadlift &amp; Posterior Chain</div>
+                                        <div class="text-xs text-gray-400">Zone 01 &bull; 6,400 kg Total Volume &bull; Today, 06:30 AM</div>
+                                    </div>
+                                </div>
+                                <span class="text-xs px-2.5 py-1 rounded-full bg-primary-container/20 text-primary font-bold uppercase">Completed</span>
+                            </div>
+
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 rounded-2xl bg-surface-high border border-white/5">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold">
+                                        <i class="fa-solid fa-person-running"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-sm font-bold text-white">High-Altitude Aerobic Sprint Intervals</div>
+                                        <div class="text-xs text-gray-400">Zone 02 &bull; 580 kcal &bull; Yesterday, 05:00 PM</div>
+                                    </div>
+                                </div>
+                                <span class="text-xs px-2.5 py-1 rounded-full bg-blue-500/20 text-blue-400 font-bold uppercase">Completed</span>
+                            </div>
+
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 rounded-2xl bg-surface-high border border-white/5">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">
+                                        <i class="fa-solid fa-snowflake"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-sm font-bold text-white">Cold Plunge &amp; Contrast Hydrotherapy</div>
+                                        <div class="text-xs text-gray-400">Recovery Lab &bull; 3 Cycles &bull; 2 Days Ago</div>
+                                    </div>
+                                </div>
+                                <span class="text-xs px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-400 font-bold uppercase">Completed</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Upcoming Reserved Sessions -->
+                    <div class="lg:col-span-4 bg-[#131313] rounded-3xl p-4 sm:p-6 border border-white/10 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="pb-4 border-b border-white/10 mb-4">
+                                <span class="text-xs font-bold uppercase tracking-wider text-primary">Calendar</span>
+                                <h3 class="font-headline text-xl uppercase tracking-wide text-white">Upcoming Bookings</h3>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="p-3.5 rounded-2xl bg-surface-high border border-white/5">
+                                    <div class="flex items-center justify-between text-xs text-primary font-bold mb-1">
+                                        <span>TODAY &bull; 06:00 PM</span>
+                                        <span class="px-2 py-0.5 rounded bg-primary-container/20 text-primary uppercase text-[10px]">Zone 01</span>
+                                    </div>
+                                    <div class="text-sm font-bold text-white">Olympic Barbell Club with Coach Vikram</div>
+                                    <div class="text-xs text-gray-400 mt-1">Platform #4 Reserved &bull; Calibrated Plates</div>
+                                </div>
+
+                                <div class="p-3.5 rounded-2xl bg-surface-high border border-white/5">
+                                    <div class="flex items-center justify-between text-xs text-blue-400 font-bold mb-1">
+                                        <span>TOMORROW &bull; 07:00 AM</span>
+                                        <span class="px-2 py-0.5 rounded bg-blue-500/20 text-blue-400 uppercase text-[10px]">Zone 02</span>
+                                    </div>
+                                    <div class="text-sm font-bold text-white">Metabolic Conditioning with Coach Priya</div>
+                                    <div class="text-xs text-gray-400 mt-1">Sled Turf &amp; SkiErg Protocols</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-white/10">
+                            <button onclick="openTransferModal()" class="w-full py-2.5 rounded-xl bg-surface-high hover:bg-surface-highest text-primary font-bold text-xs uppercase tracking-wider border border-primary-container/30 transition flex items-center justify-center gap-1.5">
+                                <span class="material-symbols-outlined text-[16px]">add</span>
+                                <span>Reserve Next Session</span>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- ========================================== -->
+            <!-- TAB 2: COACHING BOOKINGS & CREDITS -->
+            <!-- ========================================== -->
+            <div id="tab-transfers" class="tab-content hidden space-y-6 sm:space-y-8">
+                
+                <div class="bg-[#131313] rounded-3xl p-4 sm:p-6 lg:p-8 border border-white/10 shadow-sm">
+                    <div class="max-w-2xl">
+                        <span class="text-xs font-bold uppercase tracking-wider text-primary">Master Coaching Roster</span>
+                        <h2 class="font-headline text-3xl uppercase tracking-wide text-white mb-2">Book 1:1 Coaching or Reserve Class Slot</h2>
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            Schedule a private session with Salem's certified CSCS coaches or secure your reserved Eleiko platform for upcoming peak hours.
+                        </p>
+                    </div>
+
+                    <!-- Booking Form handled by validation.js (#transferForm) -->
+                    <form id="transferForm" class="mt-8 max-w-xl space-y-4" novalidate>
+                        <div class="form-group">
+                            <label for="recipientName" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-1.5">
+                                Master Coach or Session Name <span class="text-primary-container">*</span>
+                            </label>
+                            <div class="relative">
+                                <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-[18px]">sports_martial_arts</span>
+                                <input type="text" id="recipientName" name="recipientName" required placeholder="e.g. Coach Vikram (Olympic Lifting)" 
+                                    class="w-full bg-surface-high text-white placeholder:text-gray-500 pl-11 pr-4 py-3 rounded-2xl text-sm border border-white/10 focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="form-group">
+                                <label for="transferAmount" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-1.5">
+                                    Credits / Amount (₹) <span class="text-primary-container">*</span>
+                                </label>
+                                <div class="relative">
+                                    <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-[18px]">payments</span>
+                                    <input type="number" id="transferAmount" name="transferAmount" required min="1" max="50000" placeholder="1200" 
+                                        class="w-full bg-surface-high text-white placeholder:text-gray-500 pl-11 pr-4 py-3 rounded-2xl text-sm border border-white/10 focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="sessionDiscipline" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-1.5">
+                                    Training Discipline
+                                </label>
+                                <select id="sessionDiscipline" class="w-full bg-surface-high text-white px-4 py-3 rounded-2xl text-sm border border-white/10 focus:outline-none focus:border-primary-container transition">
+                                    <option value="olympic">Olympic Barbell Deck (Zone 01)</option>
+                                    <option value="hiit">High-Altitude Conditioning (Zone 02)</option>
+                                    <option value="cryo">Cryo Recovery Suite</option>
+                                    <option value="1on1">1-on-1 Biometric Coaching</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="pt-2">
+                            <button type="submit" class="w-full py-3.5 rounded-2xl bg-primary-container hover:bg-tertiary-container text-white font-headline text-lg tracking-wider uppercase transition shadow-lg shadow-primary-container/25 font-bold">
+                                Confirm Session Reservation
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+            <!-- ========================================== -->
+            <!-- TAB 3: DIGITAL RFID PASS & KEYCARDS -->
+            <!-- ========================================== -->
+            <div id="tab-cards" class="tab-content hidden space-y-6 sm:space-y-8">
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+                    
+                    <!-- Digital Gym Card Visual -->
+                    <div class="bg-gradient-to-br from-[#1c1b1b] via-[#252424] to-[#131313] rounded-3xl p-6 sm:p-8 border border-primary-container/30 shadow-2xl relative overflow-hidden">
+                        <div class="absolute -right-8 -top-8 w-44 h-44 bg-primary-container/20 rounded-full blur-3xl pointer-events-none"></div>
+
+                        <div class="flex items-center justify-between mb-8">
+                            <div class="flex items-center gap-2">
+                                <img src="stackly logo.webp" alt="Stackly" class="h-6 w-auto orange-logo-filter">
+                                <span class="font-headline text-lg text-white uppercase tracking-wider">STACKLY FITNESS</span>
+                            </div>
+                            <span class="text-xs px-3 py-1 rounded-full bg-primary-container/20 text-primary border border-primary-container/40 font-bold uppercase tracking-wider">RFID ACTIVE</span>
+                        </div>
+
+                        <div class="my-6">
+                            <span class="text-xs text-gray-400 font-bold uppercase tracking-wider block">ATHLETE NAME</span>
+                            <div class="text-2xl font-headline tracking-wide text-white user-display-name">ALEX MORGAN</div>
+                            <div class="text-xs text-primary font-medium user-display-tier mt-1">Apex Unlimited Roster</div>
+                        </div>
+
+                        <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-gray-400">
+                            <div>
+                                <span class="block text-[10px] uppercase font-bold text-gray-500">DIGITAL PASS ID</span>
+                                <span class="font-mono text-white user-display-account">#STK-4902-SLM</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="block text-[10px] uppercase font-bold text-gray-500">GATE CLEARANCE</span>
+                                <span class="text-emerald-400 font-bold">Zone 01 &bull; 02 &bull; 03 (All Floors)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card Management & Locker Settings -->
+                    <div class="bg-[#131313] rounded-3xl p-4 sm:p-6 lg:p-8 border border-white/10 shadow-sm space-y-4">
+                        <h3 class="font-headline text-xl text-white uppercase tracking-wide">Arena Gate & Locker Privileges</h3>
+                        
+                        <div class="space-y-3 pt-2">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 rounded-2xl bg-surface-high border border-white/5">
+                                <div>
+                                    <div class="text-sm font-bold text-white">MMR Complex Arena RFID Smartphone NFC</div>
+                                    <div class="text-xs text-gray-400">Tap turnstile reader with your device</div>
+                                </div>
+                                <span class="text-xs text-emerald-400 font-bold">Enabled</span>
+                            </div>
+
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 rounded-2xl bg-surface-high border border-white/5">
+                                <div>
+                                    <div class="text-sm font-bold text-white">Assigned Smart Locker PIN</div>
+                                    <div class="text-xs text-gray-400">Locker #42 (Men's Athletic Suite)</div>
+                                </div>
+                                <span class="font-mono text-primary font-bold text-sm">PIN: 7749</span>
+                            </div>
+
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 rounded-2xl bg-surface-high border border-white/5">
+                                <div>
+                                    <div class="text-sm font-bold text-white">Monthly Guest Passes</div>
+                                    <div class="text-xs text-gray-400">Invite a training partner to Salem compound</div>
+                                </div>
+                                <span class="text-xs bg-white/10 text-white px-2.5 py-1 rounded-full font-bold">2 Remaining</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- ========================================== -->
+            <!-- TAB 4: ATHLETE PROFILE & SETTINGS -->
+            <!-- ========================================== -->
+            <div id="tab-settings" class="tab-content hidden space-y-6 sm:space-y-8">
+                
+                <div class="bg-[#131313] rounded-3xl p-4 sm:p-6 lg:p-8 border border-white/10 shadow-sm max-w-2xl">
+                    <div class="mb-6">
+                        <span class="text-xs font-bold uppercase tracking-wider text-primary">Preferences</span>
+                        <h2 class="font-headline text-3xl uppercase tracking-wide text-white mb-1">Athlete Profile &amp; Contact Info</h2>
+                        <p class="text-xs text-gray-400">Update your primary credentials and training emergency notifications.</p>
+                    </div>
+
+                    <!-- Profile Settings Form handled by validation.js (#profileSettingsForm) -->
+                    <form id="profileSettingsForm" class="space-y-4" novalidate>
+                        <div class="form-group">
+                            <label for="profileName" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-1.5">
+                                Full Athlete Legal Name <span class="text-primary-container">*</span>
+                            </label>
+                            <input type="text" id="profileName" name="fullname" required value="Alex Morgan" 
+                                class="w-full bg-surface-high text-white px-4 py-3 rounded-2xl text-sm border border-white/10 focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="profileEmail" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-1.5">
+                                Notification Email <span class="text-primary-container">*</span>
+                            </label>
+                            <input type="email" id="profileEmail" name="email" required value="alex.morgan@testackly.com" 
+                                class="w-full bg-surface-high text-white px-4 py-3 rounded-2xl text-sm border border-white/10 focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="profileGoal" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-1.5">
+                                Primary Athletic Focus
+                            </label>
+                            <select id="profileGoal" class="w-full bg-surface-high text-white px-4 py-3 rounded-2xl text-sm border border-white/10 focus:outline-none focus:border-primary-container transition">
+                                <option value="hypertrophy">Hypertrophy &amp; Maximal Strength</option>
+                                <option value="powerlifting">Olympic Barbell &amp; Powerlifting</option>
+                                <option value="fatloss">Metabolic Conditioning &amp; Fat Loss</option>
+                                <option value="longevity">Kinetic Longevity &amp; Mobility</option>
+                            </select>
+                        </div>
+
+                        <div class="pt-2">
+                            <button type="submit" class="w-full py-3.5 rounded-2xl bg-primary-container hover:bg-tertiary-container text-white font-headline text-lg tracking-wider uppercase transition shadow-lg shadow-primary-container/25 font-bold">
+                                Save Profile Changes
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Quick Reserve Session Modal (#transferModal & #transferFormModal) -->
+    <div id="transferModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-[#131313] border border-white/10 rounded-3xl p-4 sm:p-8 max-w-md w-full mx-2 sm:mx-auto shadow-2xl relative">
+            <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-4">
+                <div>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-primary">Fast Pass Concierge</span>
+                    <h3 class="font-headline text-xl text-white uppercase tracking-wide">Quick Session Reservation</h3>
+                </div>
+                <button type="button" onclick="closeTransferModal()" class="w-8 h-8 rounded-lg bg-surface-high text-gray-400 hover:text-white flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Form strictly validated by validation.js -->
+            <form id="transferFormModal" class="space-y-4" novalidate>
+                <div class="form-group">
+                    <label for="quickRecipientName" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-1">
+                        Coach or Class Name <span class="text-primary-container">*</span>
+                    </label>
+                    <input type="text" id="quickRecipientName" name="recipientName" required placeholder="e.g. Coach Vikram (Olympic Barbell)" 
+                        class="w-full bg-surface-high text-white placeholder:text-gray-500 px-4 py-2.5 rounded-2xl text-sm border border-white/10 focus:outline-none focus:border-primary-container transition">
+                </div>
+
+                <div class="form-group">
+                    <label for="quickTransferAmount" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-1">
+                        Session Fee / Credits (₹) <span class="text-primary-container">*</span>
+                    </label>
+                    <input type="number" id="quickTransferAmount" name="transferAmount" required min="1" max="50000" placeholder="1000" 
+                        class="w-full bg-surface-high text-white placeholder:text-gray-500 px-4 py-2.5 rounded-2xl text-sm border border-white/10 focus:outline-none focus:border-primary-container transition">
+                </div>
+
+                <div class="form-group">
+                    <label for="quickTransferNote" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-1">
+                        Special Instructions / Focus
+                    </label>
+                    <input type="text" id="quickTransferNote" name="note" placeholder="e.g. Snatch technique review" 
+                        class="w-full bg-surface-high text-white placeholder:text-gray-500 px-4 py-2.5 rounded-2xl text-sm border border-white/10 focus:outline-none focus:border-primary-container transition">
+                </div>
+
+                <div class="pt-2 flex flex-col-reverse sm:flex-row sm:items-center sm:justify-end gap-2.5">
+                    <button type="button" onclick="closeTransferModal()" class="px-5 py-2.5 rounded-xl bg-surface-high text-gray-300 hover:text-white text-xs font-bold uppercase tracking-wider transition">
+                        Cancel
+                    </button>
+                    <button type="submit" class="px-6 py-2.5 rounded-xl bg-primary-container hover:bg-tertiary-container text-white text-xs font-bold uppercase tracking-wider transition shadow-md">
+                        Reserve Now
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- UI Tab & Chart Interaction Scripts -->
+    <script>
+        function toggleMobileSidebar(show) {
+            const sidebar = document.getElementById('dashboardSidebar');
+            const backdrop = document.getElementById('sidebarBackdrop');
+            if (show) {
+                sidebar.classList.remove('-translate-x-full');
+                backdrop.classList.remove('hidden');
+                setTimeout(() => backdrop.classList.remove('opacity-0'), 10);
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                backdrop.classList.add('opacity-0');
+                setTimeout(() => backdrop.classList.add('hidden'), 300);
+            }
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            const target = document.getElementById('tab-' + tabId);
+            if (target) target.classList.remove('hidden');
+
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active-tab');
+                btn.classList.add('text-gray-400');
+            });
+            const activeDesktop = document.getElementById('tab-btn-' + tabId);
+            if (activeDesktop) {
+                activeDesktop.classList.add('active-tab');
+                activeDesktop.classList.remove('text-gray-400');
+            }
+
+            document.querySelectorAll('.mobile-tab-btn').forEach(btn => {
+                btn.classList.remove('active-tab', 'bg-primary-container', 'text-white');
+                btn.classList.add('text-gray-400', 'bg-surface-high');
+            });
+            const activeMobile = document.getElementById('mobile-tab-' + tabId);
+            if (activeMobile) {
+                activeMobile.classList.add('active-tab', 'bg-primary-container', 'text-white');
+                activeMobile.classList.remove('text-gray-400', 'bg-surface-high');
+            }
+
+            toggleMobileSidebar(false);
+        }
+
+        window.openTransferModal = function() {
+            const m = document.getElementById('transferModal');
+            if (m) m.classList.remove('hidden');
+        };
+
+        window.closeTransferModal = function() {
+            const m = document.getElementById('transferModal');
+            if (m) m.classList.add('hidden');
+        };
+
+        // Chart.js integration
+        let userOutputChartInstance = null;
+        let userAllocationChartInstance = null;
+
+        const chartDatasets = {
+            '6M': {
+                labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+                volume: [11200, 12400, 13100, 13800, 14200, 14850],
+                calories: [4800, 5200, 5900, 6100, 6400, 6750]
+            },
+            '1Y': {
+                labels: ['Nov', 'Jan', 'Mar', 'May', 'Jul', 'Sep'],
+                volume: [8900, 9800, 11400, 12600, 13800, 14850],
+                calories: [3900, 4400, 5100, 5800, 6200, 6750]
+            }
+        };
+
+        function initUserCharts() {
+            const ctx1 = document.getElementById('userCashFlowChart');
+            if (ctx1) {
+                userOutputChartInstance = new Chart(ctx1, {
+                    type: 'line',
+                    data: {
+                        labels: chartDatasets['6M'].labels,
+                        datasets: [
+                            {
+                                label: 'Volume Lifted (kg)',
+                                data: chartDatasets['6M'].volume,
+                                borderColor: '#ff5708',
+                                backgroundColor: 'rgba(255, 87, 8, 0.15)',
+                                fill: true,
+                                tension: 0.4,
+                                borderWidth: 3,
+                                pointBackgroundColor: '#ff5708',
+                                pointRadius: 4
+                            },
+                            {
+                                label: 'Caloric Burn (kcal)',
+                                data: chartDatasets['6M'].calories,
+                                borderColor: '#3b82f6',
+                                backgroundColor: 'rgba(59, 130, 246, 0.08)',
+                                fill: true,
+                                tension: 0.4,
+                                borderWidth: 2,
+                                pointBackgroundColor: '#3b82f6',
+                                pointRadius: 3
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                labels: { color: '#9ca3af', font: { family: 'Inter', size: 11 } }
+                            }
+                        },
+                        scales: {
+                            x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#9ca3af' } },
+                            y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#9ca3af' } }
+                        }
+                    }
+                });
+            }
+
+            const ctx2 = document.getElementById('userAllocationChart');
+            if (ctx2) {
+                userAllocationChartInstance = new Chart(ctx2, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Olympic Barbell', 'HIIT Arena', 'Recovery Suite', '1:1 Coaching'],
+                        datasets: [{
+                            data: [50, 25, 15, 10],
+                            backgroundColor: ['#ff5708', '#3b82f6', '#10b981', '#f59e0b'],
+                            borderWidth: 2,
+                            borderColor: '#131313'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '72%',
+                        plugins: { legend: { display: false } }
+                    }
+                });
+            }
+        }
+
+        window.updateUserTimeframe = function(period) {
+            if (!userOutputChartInstance || !chartDatasets[period]) return;
+            document.querySelectorAll('.tf-btn').forEach(btn => {
+                btn.classList.remove('bg-primary-container', 'text-white');
+                btn.classList.add('text-gray-400');
+            });
+            const activeBtn = document.getElementById(period === '6M' ? 'btn-tf-6m' : 'btn-tf-1y');
+            if (activeBtn) {
+                activeBtn.classList.add('bg-primary-container', 'text-white');
+                activeBtn.classList.remove('text-gray-400');
+            }
+            userOutputChartInstance.data.labels = chartDatasets[period].labels;
+            userOutputChartInstance.data.datasets[0].data = chartDatasets[period].volume;
+            userOutputChartInstance.data.datasets[1].data = chartDatasets[period].calories;
+            userOutputChartInstance.update();
+        };
+
+        window.addEventListener('load', initUserCharts);
+    </script>
+
+    <!-- Global Form Validation Engine (DO NOT MODIFY validation.js) -->
+    <script src="validation.js"></script>
+</body>
+</html>

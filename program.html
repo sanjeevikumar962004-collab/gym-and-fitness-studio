@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>Stackly Fitness | Salem</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="style.css" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        tertiary: "#ffb596",
+        "inverse-primary": "#aa3600",
+        "inverse-on-surface": "#313030",
+        "primary-fixed": "#ffdbcf",
+        "surface-bright": "#3a3939",
+        surface: "#131313",
+        "on-surface": "#e5e2e1",
+        "primary-container": "#ff5708",
+        background: "#131313",
+        "on-tertiary-container": "#4d1900",
+        "surface-container-lowest": "#0e0e0e",
+        "on-tertiary-fixed-variant": "#7d2d00",
+        "on-secondary": "#2f3131",
+        "on-tertiary-fixed": "#360f00",
+        "surface-container-high": "#2a2a2a",
+        "on-primary-fixed-variant": "#822700",
+        "secondary-fixed": "#e2e2e2",
+        "on-primary": "#5c1900",
+        "on-tertiary": "#581e00",
+        "surface-dim": "#131313",
+        "on-surface-variant": "#e5beb2",
+        "tertiary-container": "#ec6926",
+        "on-secondary-fixed-variant": "#454747",
+        "on-secondary-fixed": "#1a1c1c",
+        primary: "#ffb59c",
+        "secondary-container": "#454747",
+        "inverse-surface": "#e5e2e1",
+        outline: "#ac897e",
+        "on-primary-container": "#511500",
+        "tertiary-fixed": "#ffdbcd",
+        "on-error": "#690005",
+        "secondary-fixed-dim": "#c6c6c7",
+        "surface-container-low": "#1c1b1b",
+        "surface-tint": "#ffb59c",
+        "surface-variant": "#353534",
+        "surface-container": "#201f1f",
+        error: "#ffb4ab",
+        "error-container": "#93000a",
+        "tertiary-fixed-dim": "#ffb596",
+        secondary: "#c6c6c7",
+        "surface-container-highest": "#353534",
+        "on-error-container": "#ffdad6",
+        "primary-fixed-dim": "#ffb59c",
+        "on-secondary-container": "#b4b5b5",
+        "outline-variant": "#5c4037",
+        "on-primary-fixed": "#390c00",
+        "on-background": "#e5e2e1",
+        dark: "#0e0e0e",
+        "surface-low": "#1c1b1b",
+        "surface-high": "#252424",
+        "surface-highest": "#333232",
+        borderc: "rgba(255, 255, 255, 0.08)"
+      },
+      borderRadius: {
+        DEFAULT: "1rem",
+        lg: "2rem",
+        xl: "3rem",
+        full: "9999px"
+      },
+      spacing: {
+        "space-sm": "0.5rem",
+        "space-xs": "0.25rem",
+        "space-2xl": "4rem",
+        "space-xl": "2.5rem",
+        margin: "3rem",
+        "space-lg": "1.5rem",
+        "margin-sm": "1.25rem",
+        "space-md": "1rem",
+        "gutter-sm": "1rem",
+        gutter: "1.5rem"
+      },
+      fontFamily: {
+        "title-md": ["Inter", "sans-serif"],
+        "headline-md": ["Bebas Neue", "sans-serif"],
+        "display-hero": ["Bebas Neue", "sans-serif"],
+        "body-md": ["Inter", "sans-serif"],
+        "headline-xl-mobile": ["Bebas Neue", "sans-serif"],
+        "body-lg": ["Inter", "sans-serif"],
+        "body-sm": ["Inter", "sans-serif"],
+        "headline-lg": ["Bebas Neue", "sans-serif"],
+        "headline-xl": ["Bebas Neue", "sans-serif"],
+        "label-md": ["Inter", "sans-serif"],
+        "label-caps": ["Inter", "sans-serif"],
+        "display-hero-mobile": ["Bebas Neue", "sans-serif"],
+        "title-lg": ["Inter", "sans-serif"],
+        headline: ["Bebas Neue", "sans-serif"],
+        sans: ["Inter", "sans-serif"]
+      },
+      fontSize: {
+        "title-md": ["16px", { lineHeight: "24px", fontWeight: "600" }],
+        "headline-md": ["28px", { lineHeight: "32px", letterSpacing: "0.02em", fontWeight: "400" }],
+        "display-hero": ["96px", { lineHeight: "92px", letterSpacing: "0.04em", fontWeight: "400" }],
+        "body-md": ["15px", { lineHeight: "24px", fontWeight: "400" }],
+        "headline-xl-mobile": ["40px", { lineHeight: "42px", letterSpacing: "0.02em", fontWeight: "400" }],
+        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+        "body-sm": ["13px", { lineHeight: "20px", fontWeight: "400" }],
+        "headline-lg": ["36px", { lineHeight: "40px", letterSpacing: "0.02em", fontWeight: "400" }],
+        "headline-xl": ["64px", { lineHeight: "64px", letterSpacing: "0.03em", fontWeight: "400" }],
+        "label-md": ["13px", { lineHeight: "18px", letterSpacing: "0.02em", fontWeight: "600" }],
+        "label-caps": ["11px", { lineHeight: "16px", letterSpacing: "0.12em", fontWeight: "700" }],
+        "display-hero-mobile": ["56px", { lineHeight: "56px", letterSpacing: "0.03em", fontWeight: "400" }],
+        "title-lg": ["20px", { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "700" }]
+      }
+    }
+  }
+};
+</script>
+<style>
+html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto !important;
+  scroll-behavior: smooth;
+  width: 100%;
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: visible !important;
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0e0e0e;
+}
+::-webkit-scrollbar-thumb {
+  background: #353534;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 87, 8, 0.3);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ff5708;
+  box-shadow: 0 0 8px rgba(255, 87, 8, 0.8);
+}
+.orange-logo-filter {
+  filter: brightness(0) saturate(100%) invert(48%) sepia(98%) saturate(2400%) hue-rotate(360deg) brightness(102%) contrast(105%) drop-shadow(0 0 8px rgba(255,87,8,0.6));
+}
+</style></head><body class="bg-background font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/85 backdrop-blur-xl shadow-[0_4px_24px_rgba(0,0,0,0.4)] border-b border-white/5">
+<div class="hidden sm:block bg-surface-container-lowest border-b border-white/5">
+<div class="max-w-7xl mx-auto px-margin flex items-center justify-between h-9">
+<div class="flex items-center gap-6">
+<span class="flex items-center gap-1.5 text-on-surface-variant font-label-caps text-label-caps uppercase tracking-wider">
+<span class="material-symbols-outlined text-[14px] text-primary-container">location_on</span>MMR Complex, Salem, TN
+</span>
+<span class="hidden sm:flex items-center gap-1.5 text-on-surface-variant font-label-caps text-label-caps uppercase tracking-wider">
+<span class="material-symbols-outlined text-[14px] text-primary-container">schedule</span>Mon-Sat: 5:00 AM - 10:30 PM | Sun: 6:00 AM - 8:00 PM
+</span>
+</div>
+<div class="flex items-center gap-4">
+<a class="flex items-center gap-1.5 text-on-surface-variant hover:text-primary font-label-caps text-label-caps uppercase tracking-wider transition-colors" href="tel:+914272445566">
+<span class="material-symbols-outlined text-[14px] text-primary-container">call</span>+91 (0427) 244-5566
+</a>
+<div class="hidden md:flex items-center gap-1.5 pl-3 border-l border-white/10">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse"></span>
+<span class="text-on-surface font-label-caps text-label-caps tracking-widest text-[10px] uppercase">Flagship Club Open</span>
+</div>
+</div>
+</div>
+</div>
+<div class="h-20 max-w-7xl mx-auto px-margin flex items-center justify-between">
+<a class="flex items-center gap-3 group" href="index.html" aria-label="Stackly Fitness Home">
+<div class="h-10 px-2.5 py-1 rounded-xl bg-surface-container-high/80 border border-primary-container/40 flex items-center justify-center shadow-[0_0_20px_rgba(255,87,8,0.25)] group-hover:border-primary-container group-hover:scale-105 transition-all duration-300">
+<img src="stackly logo.webp" alt="Stackly Logo" class="h-7 w-auto object-contain orange-logo-filter"/>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md tracking-wider uppercase text-on-surface leading-none group-hover:text-primary transition-colors">STACKLY</span>
+<span class="font-label-caps text-label-caps text-primary tracking-[0.25em] uppercase leading-none mt-1">FITNESS • SALEM</span>
+</div>
+</a>
+<nav class="hidden lg:flex items-center gap-1">
+<a class="px-4 py-2 rounded-full font-title-md text-title-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" href="index.html">Home</a>
+<a class="px-4 py-2 rounded-full font-title-md text-title-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" href="about.html">About Us</a>
+<a aria-current="page" class="px-4 py-2 rounded-full transition-all bg-surface-container-high text-primary font-title-md" href="program.html">Programs</a>
+<a class="px-4 py-2 rounded-full font-title-md text-title-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" href="membership.html">Membership</a>
+<a class="px-4 py-2 rounded-full font-title-md text-title-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" href="contact.html">Contact</a>
+</nav>
+<div class="flex items-center gap-3">
+<a class="hidden sm:flex items-center gap-2 px-4 py-2.5 rounded-full bg-surface-container-high hover:bg-surface-container-highest text-on-surface transition-colors font-label-md text-label-md border border-white/5" href="login.html">
+<span class="material-symbols-outlined text-[18px] text-primary">account_circle</span>
+<span>Member Portal</span>
+</a>
+<a class="hidden min-[420px]:flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-2.5 rounded-full bg-primary-container hover:bg-tertiary-container text-on-primary-container font-label-md text-label-md uppercase tracking-wider font-bold shadow-[0_0_24px_rgba(255,87,8,0.3)] transition-all hover:scale-[1.02] active:scale-[0.98]" href="signup.html">
+<span>JOIN NOW</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+<button type="button" class="lg:hidden p-2.5 rounded-full bg-surface-container-high text-on-surface hover:text-primary focus:outline-none" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')" aria-label="Toggle Navigation Menu">
+<span class="material-symbols-outlined text-[24px]">menu</span>
+</button>
+</div>
+</div>
+<div id="mobileMenu" class="hidden lg:hidden bg-surface-container-lowest/95 backdrop-blur-2xl border-t border-white/10 px-margin py-4 space-y-2">
+<a class="block px-4 py-2.5 rounded-xl text-on-surface hover:bg-surface-container-high font-title-md " href="index.html">Home</a>
+<a class="block px-4 py-2.5 rounded-xl text-on-surface hover:bg-surface-container-high font-title-md " href="about.html">About Us</a>
+<a class="block px-4 py-2.5 rounded-xl text-on-surface hover:bg-surface-container-high font-title-md text-primary bg-surface-container-high" href="program.html">Programs</a>
+<a class="block px-4 py-2.5 rounded-xl text-on-surface hover:bg-surface-container-high font-title-md " href="membership.html">Membership</a>
+<a class="block px-4 py-2.5 rounded-xl text-on-surface hover:bg-surface-container-high font-title-md " href="contact.html">Contact</a>
+<div class="pt-3 border-t border-white/10 flex flex-col gap-2">
+<a class="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-surface-container-high text-on-surface font-label-md" href="login.html">
+<span class="material-symbols-outlined text-[18px] text-primary">account_circle</span>
+<span>Member Portal</span>
+</a>
+<a class="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-primary-container text-on-primary-container font-label-md font-bold" href="signup.html">
+<span>JOIN NOW</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</header><main class="w-full pt-20 bg-background"><div class="flex flex-col w-full">
+<!-- IMMERSIVE HERO WITH EDITORIAL ATHLETIC BACKDROP -->
+<section class="relative w-full overflow-hidden bg-surface-container-lowest -mt-20 pt-28 pb-space-2xl">
+<div class="absolute inset-0 bg-cover bg-center opacity-65 scale-105 transition-transform duration-1000" data-alt="Dark dramatic gymnasium atmosphere with intense golden-orange rim lighting, sweat-drenched powerful male athlete performing a heavy deadlift with Olympic bumper plates, chalk dust suspended in mid-air, industrial charcoal steel training rigs in background." style="background-image: url('images/program-hero.webp')"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-surface/50 via-surface/40 to-surface/90"></div>
+<div class="absolute -top-32 right-10 w-96 h-96 rounded-full bg-primary-container/10 blur-[120px] pointer-events-none"></div>
+<div class="relative max-w-7xl mx-auto px-margin">
+<!-- Overline & Performance Tag -->
+<div class="flex items-center gap-3 mb-space-md">
+<span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-container/15 text-primary text-label-caps font-label-caps uppercase tracking-widest shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container animate-ping"></span>
+          2025 Conditioning Blueprint
+        </span>
+<span class="text-outline text-label-caps font-label-caps uppercase tracking-widest">// SALEM HIGH-PERFORMANCE LAB</span>
+</div>
+<div class="grid grid-cols-12 gap-gutter items-end mb-space-xl">
+<div class="col-span-12 lg:col-span-8">
+<h1 class="font-display-hero text-display-hero uppercase tracking-wide text-on-surface leading-none drop-shadow-md">
+            FIND YOUR <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-container via-primary to-tertiary">TRAINING STYLE.</span>
+</h1>
+<p class="mt-space-md font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed">
+            Purpose-built programs engineered by sports scientists and elite strength coaches. Built for sheer grit, kinetic longevity, and uncompromising physical output.
+          </p>
+</div>
+<div class="col-span-12 lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 justify-end items-start lg:items-end">
+<div class="flex items-center gap-4 p-space-md rounded-DEFAULT bg-surface-container-high/60 backdrop-blur-md shadow-lg w-full max-w-xs">
+<span class="material-symbols-outlined text-primary-container text-[32px]">fitness_center</span>
+<div>
+<span class="font-headline-md text-headline-md text-on-surface block leading-none">8 PROTOCOLS</span>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider">Olympic &amp; Biometric Certified</span>
+</div>
+</div>
+</div>
+</div>
+<!-- PROTOCOL FILTER CONTROL -->
+<div class="flex flex-wrap items-center gap-2 p-2 rounded-2xl sm:rounded-full bg-surface-container/80 backdrop-blur-md max-w-max shadow-md" id="filter-container">
+<button class="filter-btn active-filter px-6 py-2.5 rounded-full font-label-md text-label-md uppercase tracking-wider transition-all bg-primary-container text-on-primary-container shadow-md" data-filter="all" type="button">
+          All Programs
+        </button>
+<button class="filter-btn px-6 py-2.5 rounded-full font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-filter="strength" type="button">
+          Strength &amp; Hypertrophy
+        </button>
+<button class="filter-btn px-6 py-2.5 rounded-full font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-filter="weight-loss" type="button">
+          Weight Loss &amp; Conditioning
+        </button>
+<button class="filter-btn px-6 py-2.5 rounded-full font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-filter="functional" type="button">
+          Athletic &amp; Group
+        </button>
+<button class="filter-btn px-6 py-2.5 rounded-full font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-filter="recovery" type="button">
+          Recovery &amp; Mobility
+        </button>
+</div>
+</div>
+</section>
+<!-- 8 PROTOCOL CARDS ARCHITECTURE -->
+<section class="max-w-7xl mx-auto px-margin py-space-2xl w-full">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-space-xl gap-4">
+<div>
+<span class="font-label-caps text-label-caps text-primary tracking-[0.25em] uppercase block mb-1">PROVEN METHODOLOGIES</span>
+<h2 class="font-headline-xl text-headline-xl uppercase text-on-surface">CURATED TRAINING PROTOCOLS</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">
+        Every track includes bi-weekly neuromuscular tracking, load periodization, and dedicated nutrition macro-guidelines.
+      </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter" id="programs-grid">
+<!-- CARD 1 -->
+<article class="group flex flex-col rounded-DEFAULT bg-surface-container overflow-hidden shadow-lg transition-transform duration-300 hover:-translate-y-1.5" data-category="strength">
+<div class="relative h-60 w-full overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Muscular male athlete locking out an Olympic squat under intense focus in a moody dark gym, chalk powder floating in high contrast orange warm lighting, barbell resting on deltoids." src="images/program-squat.webp"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-black/30"></div>
+<span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md text-primary font-label-caps text-label-caps uppercase tracking-wider">
+            60 MINS
+          </span>
+<span class="absolute top-3 right-3 px-3 py-1 rounded-full bg-primary-container text-on-primary-container font-label-caps text-label-caps uppercase tracking-wider font-bold">
+            ADVANCED
+          </span>
+</div>
+<div class="p-space-lg flex-1 flex flex-col justify-between">
+<div>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider block mb-1">PROGRAM 01</span>
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface mb-2">Strength &amp; Conditioning</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md line-clamp-2">
+              Barbell fundamentals paired with explosive plyometrics for peak kinetic output and power transfer.
+            </p>
+<div class="flex flex-wrap gap-1.5 mb-space-md">
+<span class="px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps">Barbell Complexes</span>
+<span class="px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps">Plyometrics</span>
+<span class="px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps">VBT Tracking</span>
+</div>
+</div>
+<a class="inline-flex items-center justify-between w-full pt-space-sm text-primary hover:text-on-surface font-label-md text-label-md uppercase tracking-wider transition-colors" href="404.html">
+<span>Explore Program</span>
+<span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+</a>
+</div>
+</article>
+<!-- CARD 2 -->
+<article class="group flex flex-col rounded-DEFAULT bg-surface-container overflow-hidden shadow-lg transition-transform duration-300 hover:-translate-y-1.5" data-category="weight-loss">
+<div class="relative h-60 w-full overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Athletic female athlete sprinting vigorously on a curved non-motorized treadmill with dark background, intense sweat glistening on skin, dramatic amber backlighting." src="images/program-sprint.webp"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-black/30"></div>
+<span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md text-primary font-label-caps text-label-caps uppercase tracking-wider">
+            45 MINS
+          </span>
+<span class="absolute top-3 right-3 px-3 py-1 rounded-full bg-surface-container-highest text-on-surface font-label-caps text-label-caps uppercase tracking-wider font-bold">
+            HIGH INTENSITY
+          </span>
+</div>
+<div class="p-space-lg flex-1 flex flex-col justify-between">
+<div>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider block mb-1">PROGRAM 02</span>
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface mb-2">Rapid Weight Loss &amp; Shred</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md line-clamp-2">
+              High-cadence compound circuits with targeted EPOC oxygen debt targeting for sustainable metabolic elevation.
+            </p>
+<div class="flex flex-wrap gap-1.5 mb-space-md">
+<span class="px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps">Compound Circuits</span>
+<span class="px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps">EPOC Burn</span>
+<span class="px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps">Heart Zones</span>
+</div>
+</div>
+<a class="inline-flex items-center justify-between w-full pt-space-sm text-primary hover:text-on-surface font-label-md text-label-md uppercase tracking-wider transition-colors" href="404.html">
+<span>Explore Program</span>
+<span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+</a>
+</div>
+</article>
+<!-- CARD 3 -->
+<article class="group flex flex-col rounded-DEFAULT bg-surface-container overflow-hidden shadow-lg transition-transform duration-300 hover:-translate-y-1.5" data-category="strength">
+<div class="relative h-60 w-full overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Muscular male bodybuilder executing heavy dumbbell incline chest presses in a moody luxury gym, dramatic directional spotlighting creating deep shadows across defined musculature." src="images/program-incline.webp"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-black/30"></div>
+<span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md text-primary font-label-caps text-label-caps uppercase tracking-wider">
+            75 MINS
+          </span>
+<span class="absolute top-3 right-3 px-3 py-1 rounded-full bg-primary-container text-on-primary-container font-label-caps text-label-caps uppercase tracking-wider font-bold">
+            INTERMEDIATE+
+          </span>
+</div>
+<div class="p-space-lg flex-1 flex flex-col justify-between">
+<div>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider block mb-1">PROGRAM 03</span>
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface mb-2">Hypertrophy &amp; Muscle Build</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md line-clamp-2">
+              Time-under-tension protocols, mechanical drop sets, and calculated volume splits for pure myofibrillar growth.
+            </p>
+<div class="flex flex-wrap gap-1.5 mb-space-md">
+<span class="px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps">TUT Control</span>
+<span class="px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps">Drop Sets</span>
+<span class="px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps">Volume Splits</span>
+</div>
+</div>
+<a class="inline-flex items-center justify-between w-full pt-space-sm text-primary hover:text-on-surface font-label-md text-label-md uppercase tracking-wider transition-colors" href="404.html">
+<span>Explore Program</span>
+<span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+</a>
+</div>
+</article>
+<!-- CARD 4 -->
+<article class="group flex flex-col rounded-DEFAULT bg-surface-container overflow-hidden shadow-lg transition-transform duration-300 hover:-translate-y-1.5" data-category="strength">
+<div class="relative h-60 w-full overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Dedicated private one-on-one personal trainer coaching an athlete during barbell landmine presses, close-up focused coaching interaction in a premium private gym studio." src="images/program-coaching.webp"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-black/30"></div>
+<span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md text-primary font-label-caps text-label-caps uppercase tracking-wider">
+            60 MINS
+          </span>
+<span class="absolute top-3 right-3 px-3 py-1 rounded-full bg-tertiary-container text-on-tertiary-container font-label-caps text-label-caps uppercase tracking-wider font-bold">
+            1-ON-1 ELITE
+          </span>
+</div>
+<div class="p-space-lg flex-1 flex flex-col justify-between">
+<div>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider block mb-1">PROGRAM 04</span>
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface mb-2">1-on-1 Personal Training</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md line-clamp-2">
+              Uncompromising custom biomechanical programming with dedicated sports scientist mentorship and nutrition charting.
+            </p>
+<div class="flex flex-wrap gap-1.5 mb-space-md">
+<span class="px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps">Biomechanical Audit</span>
+<span class="px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps">Private Pod</span>
+<span class="px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps">Nutrition Sync</span>
+</div>
+</div>
+<a class="inline-flex items-center justify-between w-full pt-space-sm text-primary hover:text-on-surface font-label-md text-label-md uppercase tracking-wider transition-colors" href="404.html">
+<span>Explore Program</span>
+<span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+</a>
+</div>
+</article>
+<!-- CARD 5 -->
+<article class="group flex flex-col rounded-DEFAULT bg-surface-container overflow-hidden shadow-lg transition-transform duration-300 hover:-translate-y-1.5" data-category="functional">
+<div class="relative h-60 w-full overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Athletic sprinter pushing a heavy iron turf prowler sled on green indoor turf strip inside a high-tech obsidian athletic training club, muscular exertion visible." src="images/program-sled.webp"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-black/30"></div>
+<span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md text-primary font-label-caps text-label-caps uppercase tracking-wider">
+            50 MINS
+          </span>
+<span class="absolute top-3 right-3 px-3 py-1 rounded-full bg-surface-container-highest text-on-surface font-label-caps text-label-caps uppercase tracking-wider font-bold">
+            ALL TIERS
+          </span>
+</div>
+<div class="p-space-lg flex-1 flex flex-col justify-between">
+<div>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider block mb-1">PROGRAM 05</span>
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface mb-2">Functional Athletic Perf.</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md line-clamp-2">
+              Multi-planar agility ladders, turf sled drives, and rotational power transfer for real-world kinetic speed.
+            </p>
+<div class="flex flex-wrap gap-1.5 mb-space-md">
+<span class="px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps">Turf Sleds</span>
+<span class="px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps">Rotational Medball</span>
+<span class="px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps">Agility</span>
+</div>
+</div>
+<a class="inline-flex items-center justify-between w-full pt-space-sm text-primary hover:text-on-surface font-label-md text-label-md uppercase tracking-wider transition-colors" href="404.html">
+<span>Explore Program</span>
+<span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+</a>
+</div>
+</article>
+<!-- CARD 6 -->
+<article class="group flex flex-col rounded-DEFAULT bg-surface-container overflow-hidden shadow-lg transition-transform duration-300 hover:-translate-y-1.5" data-category="weight-loss">
+<div class="relative h-60 w-full overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Athletic conditioning room with rowers and air bikes, male and female athletes during an intense Tabata sprint interval, warm glowing neon signs in dark setting." src="images/program-conditioning.webp"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-black/30"></div>
+<span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md text-primary font-label-caps text-label-caps uppercase tracking-wider">
+            45 MINS
+          </span>
+<span class="absolute top-3 right-3 px-3 py-1 rounded-full bg-primary-container text-on-primary-container font-label-caps text-label-caps uppercase tracking-wider font-bold">
+            MAX EFFORT
+          </span>
+</div>
+<div class="p-space-lg flex-1 flex flex-col justify-between">
+<div>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider block mb-1">PROGRAM 06</span>
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface mb-2">High-Intensity Interval (HIIT)</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md line-clamp-2">
+              Tabata intervals, Concept2 ergometers, and assault air-bike surges designed to spike VO2 max ceilings.
+            </p>
+<div class="flex flex-wrap gap-1.5 mb-space-md">
+<span class="px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps">AirBike Sprints</span>
+<span class="px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps">SkiErg</span>
+<span class="px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps">VO2 Spikes</span>
+</div>
+</div>
+<a class="inline-flex items-center justify-between w-full pt-space-sm text-primary hover:text-on-surface font-label-md text-label-md uppercase tracking-wider transition-colors" href="404.html">
+<span>Explore Program</span>
+<span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+</a>
+</div>
+</article>
+<!-- CARD 7 -->
+<article class="group flex flex-col rounded-DEFAULT bg-surface-container overflow-hidden shadow-lg transition-transform duration-300 hover:-translate-y-1.5" data-category="functional">
+<div class="relative h-60 w-full overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="High-end rhythm indoor cycling studio with rows of sleek stationary bikes, dim ambient lighting with dramatic neon lines, riders riding in synchronization with rhythm." src="images/program-cycling.webp"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-black/30"></div>
+<span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md text-primary font-label-caps text-label-caps uppercase tracking-wider">
+            50 MINS
+          </span>
+<span class="absolute top-3 right-3 px-3 py-1 rounded-full bg-surface-container-highest text-on-surface font-label-caps text-label-caps uppercase tracking-wider font-bold">
+            ALL TIERS
+          </span>
+</div>
+<div class="p-space-lg flex-1 flex flex-col justify-between">
+<div>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider block mb-1">PROGRAM 07</span>
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface mb-2">Group Fitness &amp; Rhythm Cycling</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md line-clamp-2">
+              High-adrenaline acoustic cadence riding with state-of-the-art Keiser magnetic flywheel consoles.
+            </p>
+<div class="flex flex-wrap gap-1.5 mb-space-md">
+<span class="px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps">RPM Sync</span>
+<span class="px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps">Magnetic Flywheel</span>
+<span class="px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps">Endurance</span>
+</div>
+</div>
+<a class="inline-flex items-center justify-between w-full pt-space-sm text-primary hover:text-on-surface font-label-md text-label-md uppercase tracking-wider transition-colors" href="404.html">
+<span>Explore Program</span>
+<span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+</a>
+</div>
+</article>
+<!-- CARD 8 -->
+<article class="group flex flex-col rounded-DEFAULT bg-surface-container overflow-hidden shadow-lg transition-transform duration-300 hover:-translate-y-1.5" data-category="recovery">
+<div class="relative h-60 w-full overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Serene athletic recovery lounge with warm natural timber and dark granite accents, person performing deep mobility stretches on premium yoga mat with dim calming floor lamps." src="images/program-mobility.webp"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-black/30"></div>
+<span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md text-primary font-label-caps text-label-caps uppercase tracking-wider">
+            60 MINS
+          </span>
+<span class="absolute top-3 right-3 px-3 py-1 rounded-full bg-surface-container-highest text-on-surface font-label-caps text-label-caps uppercase tracking-wider font-bold">
+            RESTORATIVE
+          </span>
+</div>
+<div class="p-space-lg flex-1 flex flex-col justify-between">
+<div>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider block mb-1">PROGRAM 08</span>
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface mb-2">Mobility, Recovery &amp; Yoga</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md line-clamp-2">
+              Restorative myofascial decompression, somatic nervous system down-regulation, and hip-capsular mobility.
+            </p>
+<div class="flex flex-wrap gap-1.5 mb-space-md">
+<span class="px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps">Somatic Flow</span>
+<span class="px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps">Decompression</span>
+<span class="px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps">Fascial Stretch</span>
+</div>
+</div>
+<a class="inline-flex items-center justify-between w-full pt-space-sm text-primary hover:text-on-surface font-label-md text-label-md uppercase tracking-wider transition-colors" href="404.html">
+<span>Explore Program</span>
+<span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+</a>
+</div>
+</article>
+</div>
+</section>
+<!-- INTERACTIVE WEEKLY CLASS TIMETABLE -->
+<section class="w-full bg-surface-container-low py-space-2xl">
+<div class="max-w-7xl mx-auto px-margin">
+<div class="flex flex-col lg:flex-row lg:items-end justify-between mb-space-xl gap-4">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="font-label-caps text-label-caps text-primary uppercase tracking-[0.2em]">LIVE TIMETABLE // SALEM FLAGSHIP</span>
+</div>
+<h2 class="font-headline-xl text-headline-xl uppercase text-on-surface">WEEKLY PROTOCOL SCHEDULE</h2>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm bg-surface-container px-4 py-2 rounded-full shadow-sm">
+<span class="material-symbols-outlined text-primary-container text-[18px]">verified</span>
+<span>Real-time Cap: 16 Spots per Class</span>
+</div>
+</div>
+</div>
+<!-- DAY TABS SELECTOR -->
+<div class="flex items-center gap-2 overflow-x-auto pb-4 mb-space-md" id="schedule-tabs">
+<button class="day-tab active-day flex-1 min-w-[120px] py-3.5 px-4 rounded-DEFAULT bg-primary-container text-on-primary-container flex flex-col items-center justify-center transition-all shadow-md" data-day="mon" type="button">
+<span class="font-label-caps text-label-caps uppercase tracking-wider">MON</span>
+<span class="font-headline-md text-headline-md leading-none mt-1">OCT 27</span>
+</button>
+<button class="day-tab flex-1 min-w-[120px] py-3.5 px-4 rounded-DEFAULT bg-surface-container hover:bg-surface-container-high text-on-surface flex flex-col items-center justify-center transition-all" data-day="tue" type="button">
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider">TUE</span>
+<span class="font-headline-md text-headline-md leading-none mt-1">OCT 28</span>
+</button>
+<button class="day-tab flex-1 min-w-[120px] py-3.5 px-4 rounded-DEFAULT bg-surface-container hover:bg-surface-container-high text-on-surface flex flex-col items-center justify-center transition-all" data-day="wed" type="button">
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider">WED</span>
+<span class="font-headline-md text-headline-md leading-none mt-1">OCT 29</span>
+</button>
+<button class="day-tab flex-1 min-w-[120px] py-3.5 px-4 rounded-DEFAULT bg-surface-container hover:bg-surface-container-high text-on-surface flex flex-col items-center justify-center transition-all" data-day="thu" type="button">
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider">THU</span>
+<span class="font-headline-md text-headline-md leading-none mt-1">OCT 30</span>
+</button>
+<button class="day-tab flex-1 min-w-[120px] py-3.5 px-4 rounded-DEFAULT bg-surface-container hover:bg-surface-container-high text-on-surface flex flex-col items-center justify-center transition-all" data-day="fri" type="button">
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider">FRI</span>
+<span class="font-headline-md text-headline-md leading-none mt-1">OCT 31</span>
+</button>
+<button class="day-tab flex-1 min-w-[120px] py-3.5 px-4 rounded-DEFAULT bg-surface-container hover:bg-surface-container-high text-on-surface flex flex-col items-center justify-center transition-all" data-day="sat" type="button">
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider">SAT</span>
+<span class="font-headline-md text-headline-md leading-none mt-1">NOV 01</span>
+</button>
+<button class="day-tab flex-1 min-w-[120px] py-3.5 px-4 rounded-DEFAULT bg-surface-container hover:bg-surface-container-high text-on-surface flex flex-col items-center justify-center transition-all" data-day="sun" type="button">
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider">SUN</span>
+<span class="font-headline-md text-headline-md leading-none mt-1">NOV 02</span>
+</button>
+</div>
+<!-- DESKTOP TIMETABLE MATRIX -->
+<div class="rounded-DEFAULT bg-surface-container overflow-hidden shadow-xl" id="schedule-matrix">
+<div class="divide-y divide-surface-container-high/40">
+<!-- ROW 1 -->
+<div class="p-space-lg flex flex-col lg:flex-row lg:items-center justify-between gap-4 hover:bg-surface-container-high/40 transition-colors">
+<div class="flex items-center gap-6 min-w-0 sm:min-w-[220px]">
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-primary-container leading-none">05:30 AM</span>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider mt-0.5">60 MIN DURATION</span>
+</div>
+<div class="w-px h-10 bg-surface-variant hidden lg:block"></div>
+<div>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high text-tertiary font-label-caps text-label-caps uppercase">DAWN PATROL</span>
+</div>
+</div>
+<div class="flex-1">
+<h4 class="font-headline-md text-headline-md text-on-surface uppercase mb-0.5">Strength &amp; Conditioning (Wave 1)</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-3">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px] text-primary">person</span> Coach Vikramaditya R.</span>
+<span>•</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px] text-primary">domain</span> Iron Foundry (Zone A)</span>
+</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="text-right">
+<span class="text-label-caps font-label-caps text-primary uppercase block">3 SPOTS REMAINING</span>
+<div class="w-24 h-1.5 rounded-full bg-surface-container-highest mt-1 overflow-hidden">
+<div class="h-full bg-primary-container rounded-full" style="width: 80%;"></div>
+</div>
+</div>
+<button class="book-slot-btn px-6 py-2.5 rounded-full bg-primary-container hover:bg-tertiary-container text-on-primary-container font-label-md text-label-md uppercase tracking-wider font-bold transition-all shadow-sm" onclick="window.location.href='404.html'" type="button">
+                BOOK CLASS
+              </button>
+</div>
+</div>
+<!-- ROW 2 -->
+<div class="p-space-lg flex flex-col lg:flex-row lg:items-center justify-between gap-4 hover:bg-surface-container-high/40 transition-colors">
+<div class="flex items-center gap-6 min-w-0 sm:min-w-[220px]">
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-primary-container leading-none">07:00 AM</span>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider mt-0.5">45 MIN DURATION</span>
+</div>
+<div class="w-px h-10 bg-surface-variant hidden lg:block"></div>
+<div>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high text-tertiary font-label-caps text-label-caps uppercase">METABOLIC</span>
+</div>
+</div>
+<div class="flex-1">
+<h4 class="font-headline-md text-headline-md text-on-surface uppercase mb-0.5">High-Intensity Interval Shred</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-3">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px] text-primary">person</span> Coach Divya Swaminathan</span>
+<span>•</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px] text-primary">domain</span> Kinetic Turf (Zone B)</span>
+</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="text-right">
+<span class="text-label-caps font-label-caps text-secondary uppercase block">7 SPOTS REMAINING</span>
+<div class="w-24 h-1.5 rounded-full bg-surface-container-highest mt-1 overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 55%;"></div>
+</div>
+</div>
+<button class="book-slot-btn px-6 py-2.5 rounded-full bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-md text-label-md uppercase tracking-wider font-bold transition-all shadow-sm" onclick="window.location.href='404.html'" type="button">
+                BOOK CLASS
+              </button>
+</div>
+</div>
+<!-- ROW 3 -->
+<div class="p-space-lg flex flex-col lg:flex-row lg:items-center justify-between gap-4 hover:bg-surface-container-high/40 transition-colors">
+<div class="flex items-center gap-6 min-w-0 sm:min-w-[220px]">
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-primary-container leading-none">09:30 AM</span>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider mt-0.5">75 MIN DURATION</span>
+</div>
+<div class="w-px h-10 bg-surface-variant hidden lg:block"></div>
+<div>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high text-tertiary font-label-caps text-label-caps uppercase">HYPERTROPHY</span>
+</div>
+</div>
+<div class="flex-1">
+<h4 class="font-headline-md text-headline-md text-on-surface uppercase mb-0.5">Hypertrophy &amp; Mechanical Tension</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-3">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px] text-primary">person</span> Coach Karthik Natarajan</span>
+<span>•</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px] text-primary">domain</span> Heavy Rig Platform</span>
+</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="text-right">
+<span class="text-label-caps font-label-caps text-error uppercase block">ONLY 1 SPOT</span>
+<div class="w-24 h-1.5 rounded-full bg-surface-container-highest mt-1 overflow-hidden">
+<div class="h-full bg-error rounded-full" style="width: 95%;"></div>
+</div>
+</div>
+<button class="book-slot-btn px-6 py-2.5 rounded-full bg-primary-container hover:bg-tertiary-container text-on-primary-container font-label-md text-label-md uppercase tracking-wider font-bold transition-all shadow-sm" onclick="window.location.href='404.html'" type="button">
+                BOOK CLASS
+              </button>
+</div>
+</div>
+<!-- ROW 4 -->
+<div class="p-space-lg flex flex-col lg:flex-row lg:items-center justify-between gap-4 hover:bg-surface-container-high/40 transition-colors">
+<div class="flex items-center gap-6 min-w-0 sm:min-w-[220px]">
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-primary-container leading-none">05:30 PM</span>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider mt-0.5">50 MIN DURATION</span>
+</div>
+<div class="w-px h-10 bg-surface-variant hidden lg:block"></div>
+<div>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high text-tertiary font-label-caps text-label-caps uppercase">AGILITY</span>
+</div>
+</div>
+<div class="flex-1">
+<h4 class="font-headline-md text-headline-md text-on-surface uppercase mb-0.5">Functional Athletic Performance</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-3">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px] text-primary">person</span> Coach Sarah Mathews</span>
+<span>•</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px] text-primary">domain</span> Sprint Track &amp; Sled Run</span>
+</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="text-right">
+<span class="text-label-caps font-label-caps text-secondary uppercase block">5 SPOTS REMAINING</span>
+<div class="w-24 h-1.5 rounded-full bg-surface-container-highest mt-1 overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 70%;"></div>
+</div>
+</div>
+<button class="book-slot-btn px-6 py-2.5 rounded-full bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-md text-label-md uppercase tracking-wider font-bold transition-all shadow-sm" onclick="window.location.href='404.html'" type="button">
+                BOOK CLASS
+              </button>
+</div>
+</div>
+<!-- ROW 5 -->
+<div class="p-space-lg flex flex-col lg:flex-row lg:items-center justify-between gap-4 hover:bg-surface-container-high/40 transition-colors">
+<div class="flex items-center gap-6 min-w-0 sm:min-w-[220px]">
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-primary-container leading-none">07:00 PM</span>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider mt-0.5">50 MIN DURATION</span>
+</div>
+<div class="w-px h-10 bg-surface-variant hidden lg:block"></div>
+<div>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high text-tertiary font-label-caps text-label-caps uppercase">RHYTHM</span>
+</div>
+</div>
+<div class="flex-1">
+<h4 class="font-headline-md text-headline-md text-on-surface uppercase mb-0.5">Group Rhythm Cycling (Bass Heavy)</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-3">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px] text-primary">person</span> Coach Arjun Bala</span>
+<span>•</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px] text-primary">domain</span> Pulse Studio (Zone C)</span>
+</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="text-right">
+<span class="text-label-caps font-label-caps text-error uppercase block">CLASS FULL</span>
+<div class="w-24 h-1.5 rounded-full bg-surface-container-highest mt-1 overflow-hidden">
+<div class="h-full bg-error rounded-full" style="width: 100%;"></div>
+</div>
+</div>
+<button class="book-slot-btn px-6 py-2.5 rounded-full bg-surface-container-highest text-outline font-label-md text-label-md uppercase tracking-wider transition-all cursor-not-allowed" onclick="window.location.href='404.html'" type="button">
+                WAITLIST
+              </button>
+</div>
+</div>
+<!-- ROW 6 -->
+<div class="p-space-lg flex flex-col lg:flex-row lg:items-center justify-between gap-4 hover:bg-surface-container-high/40 transition-colors">
+<div class="flex items-center gap-6 min-w-0 sm:min-w-[220px]">
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-primary-container leading-none">08:15 PM</span>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider mt-0.5">60 MIN DURATION</span>
+</div>
+<div class="w-px h-10 bg-surface-variant hidden lg:block"></div>
+<div>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high text-tertiary font-label-caps text-label-caps uppercase">RESTORE</span>
+</div>
+</div>
+<div class="flex-1">
+<h4 class="font-headline-md text-headline-md text-on-surface uppercase mb-0.5">Mobility, Fascial Stretch &amp; Somatics</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-3">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px] text-primary">person</span> Coach Maya Krishnan</span>
+<span>•</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px] text-primary">domain</span> Zen Haven (Zen Floor)</span>
+</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="text-right">
+<span class="text-label-caps font-label-caps text-secondary uppercase block">6 SPOTS REMAINING</span>
+<div class="w-24 h-1.5 rounded-full bg-surface-container-highest mt-1 overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 60%;"></div>
+</div>
+</div>
+<button class="book-slot-btn px-6 py-2.5 rounded-full bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-md text-label-md uppercase tracking-wider font-bold transition-all shadow-sm" onclick="window.location.href='404.html'" type="button">
+                BOOK CLASS
+              </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- THE STACKLY 4-STEP METHODOLOGY -->
+<section class="max-w-7xl mx-auto px-margin py-space-2xl w-full">
+<div class="mb-space-xl">
+<span class="font-label-caps text-label-caps text-primary tracking-[0.25em] uppercase block mb-1">THE SYSTEMATIC PROCESS</span>
+<h2 class="font-headline-xl text-headline-xl uppercase text-on-surface">THE STACKLY 4-STEP METHODOLOGY</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl mt-2">
+        We do not rely on guesswork or generic fitness trends. Your conditioning trajectory is guided by clinical data metrics.
+      </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- STEP 1 -->
+<div class="relative p-space-lg rounded-DEFAULT bg-surface-container shadow-md flex flex-col justify-between group hover:bg-surface-container-high transition-colors">
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<span class="font-display-hero text-headline-xl text-surface-container-highest group-hover:text-primary-container/40 transition-colors leading-none">01</span>
+<span class="material-symbols-outlined text-primary-container text-[28px]">csv</span>
+</div>
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface mb-2">ASSESS</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-4">
+            InBody 770 segmental lean-mass analysis, joint ROM assessment, and baseline anaerobic threshold diagnostic.
+          </p>
+</div>
+<div class="pt-3 border-t-0 flex items-center justify-between text-outline text-label-caps font-label-caps uppercase tracking-wider">
+<span>Phase 01</span>
+<span class="text-primary">Clinical Audit</span>
+</div>
+</div>
+<!-- STEP 2 -->
+<div class="relative p-space-lg rounded-DEFAULT bg-surface-container shadow-md flex flex-col justify-between group hover:bg-surface-container-high transition-colors">
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<span class="font-display-hero text-headline-xl text-surface-container-highest group-hover:text-primary-container/40 transition-colors leading-none">02</span>
+<span class="material-symbols-outlined text-primary-container text-[28px]">architecture</span>
+</div>
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface mb-2">PROGRAM</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-4">
+            Tailored 6-12 week macrocycles with customized progressive overload schedules, deload weeks, and metabolic fuel plans.
+          </p>
+</div>
+<div class="pt-3 border-t-0 flex items-center justify-between text-outline text-label-caps font-label-caps uppercase tracking-wider">
+<span>Phase 02</span>
+<span class="text-primary">Periodization</span>
+</div>
+</div>
+<!-- STEP 3 -->
+<div class="relative p-space-lg rounded-DEFAULT bg-surface-container shadow-md flex flex-col justify-between group hover:bg-surface-container-high transition-colors">
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<span class="font-display-hero text-headline-xl text-surface-container-highest group-hover:text-primary-container/40 transition-colors leading-none">03</span>
+<span class="material-symbols-outlined text-primary-container text-[28px]">electric_bolt</span>
+</div>
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface mb-2">EXECUTE</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-4">
+            Precision load pacing under certified strength master coaches with barbell velocity telemetry and form critique.
+          </p>
+</div>
+<div class="pt-3 border-t-0 flex items-center justify-between text-outline text-label-caps font-label-caps uppercase tracking-wider">
+<span>Phase 03</span>
+<span class="text-primary">Kinetic Drive</span>
+</div>
+</div>
+<!-- STEP 4 -->
+<div class="relative p-space-lg rounded-DEFAULT bg-surface-container shadow-md flex flex-col justify-between group hover:bg-surface-container-high transition-colors">
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<span class="font-display-hero text-headline-xl text-surface-container-highest group-hover:text-primary-container/40 transition-colors leading-none">04</span>
+<span class="material-symbols-outlined text-primary-container text-[28px]">query_stats</span>
+</div>
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface mb-2">MEASURE</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-4">
+            Continuous 1RM progression tracking, resting HRV recovery scores, and automatic macrocycle recalculation.
+          </p>
+</div>
+<div class="pt-3 border-t-0 flex items-center justify-between text-outline text-label-caps font-label-caps uppercase tracking-wider">
+<span>Phase 04</span>
+<span class="text-primary">Biometric Audit</span>
+</div>
+</div>
+</div>
+</section>
+<!-- COACH DIAGNOSTIC CALL CTA SECTION -->
+<section class="max-w-7xl mx-auto px-margin pb-space-2xl w-full">
+<div class="relative rounded-lg bg-surface-container-high overflow-hidden shadow-2xl p-space-xl lg:p-space-2xl">
+<!-- Background Ambient Glow -->
+<div class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-primary-container/20 blur-[100px] pointer-events-none"></div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center relative z-10">
+<div class="lg:col-span-7">
+<div class="flex items-center gap-2 mb-space-sm">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+<span class="font-label-caps text-label-caps text-primary tracking-widest uppercase">FREE 15-MINUTE ATHLETIC CONSULTATION</span>
+</div>
+<h2 class="font-headline-xl text-headline-xl uppercase text-on-surface leading-tight mb-space-md">
+            NOT SURE WHICH TRACK FITS YOUR BODY?
+          </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl leading-relaxed mb-space-lg">
+            Speak directly with our Chief Strength Director in Salem. We assess your training history, prior injuries, and exact athletic ambitions before placing you in a track.
+          </p>
+<div class="flex flex-wrap items-center gap-6">
+<div class="flex items-center gap-2 text-on-surface font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-primary-container text-[20px]">check_circle</span>
+<span>Zero High-Pressure Sales</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-primary-container text-[20px]">check_circle</span>
+<span>InBody 770 Voucher Included</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-primary-container text-[20px]">check_circle</span>
+<span>MMR Complex Flagship Tour</span>
+</div>
+</div>
+</div>
+<div class="lg:col-span-5 flex flex-col gap-4">
+<div class="p-space-lg rounded-DEFAULT bg-surface-container shadow-lg">
+<h3 class="font-title-lg text-title-lg text-on-surface mb-1">Book Diagnostic Consultation</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md">Enter your phone to lock in a callback slot with our Salem lead trainers.</p>
+<form class="space-y-3" onsubmit="event.preventDefault(); alert('Diagnostic session scheduled! A coach will reach out within 4 business hours.');">
+<div>
+<input class="w-full bg-surface-container-high px-4 py-3 rounded-full font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-1 focus:ring-primary-container shadow-inner" placeholder="Full Name" required="" type="text"/>
+</div>
+<div>
+<input class="w-full bg-surface-container-high px-4 py-3 rounded-full font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-1 focus:ring-primary-container shadow-inner" placeholder="+91 Phone Number" required="" type="tel"/>
+</div>
+<div>
+<select class="w-full bg-surface-container-high px-4 py-3 rounded-full font-body-sm text-body-sm text-on-surface focus:outline-none focus:ring-1 focus:ring-primary-container shadow-inner">
+<option disabled="" selected="" value="">Primary Fitness Objective</option>
+<option value="strength">Hypertrophy &amp; Maximal Strength</option>
+<option value="fatloss">Rapid Fat Loss &amp; Conditioning</option>
+<option value="athletic">Functional Athletic Longevity</option>
+<option value="recovery">Mobility &amp; Pain Elimination</option>
+</select>
+</div>
+<button class="w-full py-3.5 rounded-full bg-primary-container hover:bg-tertiary-container text-on-primary-container font-label-md text-label-md uppercase tracking-wider font-bold transition-all shadow-md flex items-center justify-center gap-2" type="submit">
+<span>CLAIM COMPLIMENTARY ASSESSMENT</span>
+<span class="material-symbols-outlined text-[18px]">calendar_month</span>
+</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CLIENT-SIDE SCRIPT FOR FILTERING & INTERACTION -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Protocol Filter Logic
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const cards = document.querySelectorAll('#programs-grid article');
+
+      filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterButtons.forEach(b => {
+            b.classList.remove('bg-primary-container', 'text-on-primary-container', 'shadow-md');
+            b.classList.add('text-on-surface-variant');
+          });
+          btn.classList.remove('text-on-surface-variant');
+          btn.classList.add('bg-primary-container', 'text-on-primary-container', 'shadow-md');
+
+          const category = btn.getAttribute('data-filter');
+          cards.forEach(card => {
+            if (category === 'all' || card.getAttribute('data-category') === category) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // Timetable Tab Switcher Simulation
+      const dayTabs = document.querySelectorAll('.day-tab');
+      dayTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          dayTabs.forEach(t => {
+            t.classList.remove('bg-primary-container', 'text-on-primary-container', 'shadow-md');
+            t.classList.add('bg-surface-container', 'text-on-surface');
+            const span = t.querySelector('span:first-child');
+            if (span) span.className = 'font-label-caps text-label-caps text-outline uppercase tracking-wider';
+          });
+          tab.classList.remove('bg-surface-container', 'text-on-surface');
+          tab.classList.add('bg-primary-container', 'text-on-primary-container', 'shadow-md');
+          const span = tab.querySelector('span:first-child');
+          if (span) span.className = 'font-label-caps text-label-caps uppercase tracking-wider';
+        });
+      });
+
+      // Book Class Toast Interaction
+      const bookButtons = document.querySelectorAll('.book-slot-btn');
+      bookButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+          if (this.textContent.trim() === 'BOOK CLASS') {
+            this.textContent = 'CONFIRMED ✓';
+            this.classList.remove('bg-primary-container', 'hover:bg-tertiary-container');
+            this.classList.add('bg-surface-bright', 'text-primary');
+          }
+        });
+      });
+    });
+  </script>
+</div></main><footer class="w-full bg-surface-container-lowest text-on-surface pt-space-2xl pb-space-xl"><div class="max-w-7xl mx-auto px-margin"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-gutter mb-space-2xl"><div class="lg:col-span-4 flex flex-col items-start pr-0 lg:pr-space-md"><a href="index.html" class="flex items-center gap-3 mb-space-md group"><div class="h-9 px-2 py-1 rounded-xl bg-surface-container border border-primary-container/30 flex items-center justify-center"><img src="stackly logo.webp" alt="Stackly Logo" class="h-6 w-auto orange-logo-filter"/></div><span class="font-headline-md text-headline-md tracking-wider uppercase text-on-surface group-hover:text-primary transition-colors">STACKLY FITNESS</span></a><p class="font-body-md text-body-md text-on-surface-variant mb-space-lg leading-relaxed">Salem's apex conditioning enclave. Merging brutalist athletic architecture, Olympic-grade iron, and biometric recovery for dedicated high-performers.</p><div class="flex items-center gap-3"><a aria-label="Club Community Portal" class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface hover:text-primary-container hover:bg-surface-container-high transition-colors" href="404.html"><span class="material-symbols-outlined text-[20px]">sports_gymnastics</span></a><a aria-label="Club Stream" class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface hover:text-primary-container hover:bg-surface-container-high transition-colors" href="404.html"><span class="material-symbols-outlined text-[20px]">play_circle</span></a><a aria-label="Broadcast Hub" class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface hover:text-primary-container hover:bg-surface-container-high transition-colors" href="404.html"><span class="material-symbols-outlined text-[20px]">podcasts</span></a><a aria-label="Location Feed" class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface hover:text-primary-container hover:bg-surface-container-high transition-colors" href="404.html"><span class="material-symbols-outlined text-[20px]">public</span></a></div></div><div class="lg:col-span-2 flex flex-col"><span class="font-label-caps text-label-caps text-primary tracking-widest uppercase mb-space-md">PROGRAMS</span><ul class="space-y-space-sm font-body-sm text-body-sm"><li class="text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer"><a href="404.html" class="hover:text-primary transition-colors">Hypertrophy Matrix</a></li><li class="text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer"><a href="404.html" class="hover:text-primary transition-colors">Olympic Barbell Club</a></li><li class="text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer"><a href="404.html" class="hover:text-primary transition-colors">High-Altitude HIIT</a></li><li class="text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer"><a href="404.html" class="hover:text-primary transition-colors">Cryo &amp; Recovery Lab</a></li><li class="text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer"><a href="404.html" class="hover:text-primary transition-colors">Private 1:1 Coaching</a></li></ul></div><div class="lg:col-span-2 flex flex-col"><span class="font-label-caps text-label-caps text-primary tracking-widest uppercase mb-space-md">EXPEDITIONS</span><ul class="space-y-space-sm font-body-sm text-body-sm"><li class="text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer"><a href="404.html" class="hover:text-primary transition-colors">The Salem Flagship</a></li><li class="text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer"><a href="404.html" class="hover:text-primary transition-colors">Tiers &amp; Passes</a></li><li class="text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer"><a href="404.html" class="hover:text-primary transition-colors">Trainer Roster</a></li><li class="text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer"><a href="404.html" class="hover:text-primary transition-colors">Corporate Fitness</a></li><li class="text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer"><a href="404.html" class="hover:text-primary transition-colors">Member Guidelines</a></li></ul></div><div class="lg:col-span-4 flex flex-col"><span class="font-label-caps text-label-caps text-primary tracking-widest uppercase mb-space-md">SALEM FLAGSHIP ENCLAVE</span><div class="p-space-md rounded-DEFAULT bg-surface-container mb-space-md"><div class="flex items-start gap-2.5 mb-2"><span class="material-symbols-outlined text-primary-container text-[20px] shrink-0 mt-0.5">pin_drop</span><div class="font-body-sm text-body-sm text-on-surface"><p class="font-bold text-on-surface">MMR Complex, Meyyanur Bypass Road</p><p class="text-on-surface-variant">Salem, Tamil Nadu 636004</p></div></div><p class="font-body-sm text-body-sm text-on-surface-variant pl-7">Tel: +91 (0427) 244-5566 • info@stacklyfitness.in</p></div><div><span class="font-label-caps text-label-caps text-on-surface uppercase tracking-wider block mb-2">THE INTEL BULLETIN</span><form data-validate class="flex items-center gap-2" novalidate><input class="flex-1 bg-surface-container-high px-4 py-2.5 rounded-full font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-1 focus:ring-primary-container" id="bulletinEmail" name="email" required placeholder="Enter your executive email" type="email"/><button class="px-5 py-2.5 rounded-full bg-primary-container text-on-primary-container font-label-caps text-label-caps uppercase font-bold hover:bg-tertiary-container transition-colors" type="submit">JOIN</button></form></div></div></div><div class="pt-space-lg flex flex-col md:flex-row items-center justify-between gap-4 font-body-sm text-body-sm text-on-surface-variant"><div class="flex items-center gap-6"><span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-primary-container">verified</span>Tamil Nadu Reg. Premium Facility</span><span>© 2025 STACKLY FITNESS PVT LTD. ALL RIGHTS RESERVED.</span></div><div class="flex items-center gap-6 font-label-caps text-label-caps uppercase tracking-wider"><a class="hover:text-on-surface transition-colors" href="404.html">Privacy Policy</a><a class="hover:text-on-surface transition-colors" href="404.html">Terms of Tier Access</a><a class="hover:text-on-surface transition-colors" href="404.html">Facility Conduct</a></div></div></div></footer><script src="validation.js"></script>
+</body></html>

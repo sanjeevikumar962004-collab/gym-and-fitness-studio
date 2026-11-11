@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>Stackly Fitness | Salem</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="style.css" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        tertiary: "#ffb596",
+        "inverse-primary": "#aa3600",
+        "inverse-on-surface": "#313030",
+        "primary-fixed": "#ffdbcf",
+        "surface-bright": "#3a3939",
+        surface: "#131313",
+        "on-surface": "#e5e2e1",
+        "primary-container": "#ff5708",
+        background: "#131313",
+        "on-tertiary-container": "#4d1900",
+        "surface-container-lowest": "#0e0e0e",
+        "on-tertiary-fixed-variant": "#7d2d00",
+        "on-secondary": "#2f3131",
+        "on-tertiary-fixed": "#360f00",
+        "surface-container-high": "#2a2a2a",
+        "on-primary-fixed-variant": "#822700",
+        "secondary-fixed": "#e2e2e2",
+        "on-primary": "#5c1900",
+        "on-tertiary": "#581e00",
+        "surface-dim": "#131313",
+        "on-surface-variant": "#e5beb2",
+        "tertiary-container": "#ec6926",
+        "on-secondary-fixed-variant": "#454747",
+        "on-secondary-fixed": "#1a1c1c",
+        primary: "#ffb59c",
+        "secondary-container": "#454747",
+        "inverse-surface": "#e5e2e1",
+        outline: "#ac897e",
+        "on-primary-container": "#511500",
+        "tertiary-fixed": "#ffdbcd",
+        "on-error": "#690005",
+        "secondary-fixed-dim": "#c6c6c7",
+        "surface-container-low": "#1c1b1b",
+        "surface-tint": "#ffb59c",
+        "surface-variant": "#353534",
+        "surface-container": "#201f1f",
+        error: "#ffb4ab",
+        "error-container": "#93000a",
+        "tertiary-fixed-dim": "#ffb596",
+        secondary: "#c6c6c7",
+        "surface-container-highest": "#353534",
+        "on-error-container": "#ffdad6",
+        "primary-fixed-dim": "#ffb59c",
+        "on-secondary-container": "#b4b5b5",
+        "outline-variant": "#5c4037",
+        "on-primary-fixed": "#390c00",
+        "on-background": "#e5e2e1",
+        dark: "#0e0e0e",
+        "surface-low": "#1c1b1b",
+        "surface-high": "#252424",
+        "surface-highest": "#333232",
+        borderc: "rgba(255, 255, 255, 0.08)"
+      },
+      borderRadius: {
+        DEFAULT: "1rem",
+        lg: "2rem",
+        xl: "3rem",
+        full: "9999px"
+      },
+      spacing: {
+        "space-sm": "0.5rem",
+        "space-xs": "0.25rem",
+        "space-2xl": "4rem",
+        "space-xl": "2.5rem",
+        margin: "3rem",
+        "space-lg": "1.5rem",
+        "margin-sm": "1.25rem",
+        "space-md": "1rem",
+        "gutter-sm": "1rem",
+        gutter: "1.5rem"
+      },
+      fontFamily: {
+        "title-md": ["Inter", "sans-serif"],
+        "headline-md": ["Bebas Neue", "sans-serif"],
+        "display-hero": ["Bebas Neue", "sans-serif"],
+        "body-md": ["Inter", "sans-serif"],
+        "headline-xl-mobile": ["Bebas Neue", "sans-serif"],
+        "body-lg": ["Inter", "sans-serif"],
+        "body-sm": ["Inter", "sans-serif"],
+        "headline-lg": ["Bebas Neue", "sans-serif"],
+        "headline-xl": ["Bebas Neue", "sans-serif"],
+        "label-md": ["Inter", "sans-serif"],
+        "label-caps": ["Inter", "sans-serif"],
+        "display-hero-mobile": ["Bebas Neue", "sans-serif"],
+        "title-lg": ["Inter", "sans-serif"],
+        headline: ["Bebas Neue", "sans-serif"],
+        sans: ["Inter", "sans-serif"]
+      },
+      fontSize: {
+        "title-md": ["16px", { lineHeight: "24px", fontWeight: "600" }],
+        "headline-md": ["28px", { lineHeight: "32px", letterSpacing: "0.02em", fontWeight: "400" }],
+        "display-hero": ["96px", { lineHeight: "92px", letterSpacing: "0.04em", fontWeight: "400" }],
+        "body-md": ["15px", { lineHeight: "24px", fontWeight: "400" }],
+        "headline-xl-mobile": ["40px", { lineHeight: "42px", letterSpacing: "0.02em", fontWeight: "400" }],
+        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+        "body-sm": ["13px", { lineHeight: "20px", fontWeight: "400" }],
+        "headline-lg": ["36px", { lineHeight: "40px", letterSpacing: "0.02em", fontWeight: "400" }],
+        "headline-xl": ["64px", { lineHeight: "64px", letterSpacing: "0.03em", fontWeight: "400" }],
+        "label-md": ["13px", { lineHeight: "18px", letterSpacing: "0.02em", fontWeight: "600" }],
+        "label-caps": ["11px", { lineHeight: "16px", letterSpacing: "0.12em", fontWeight: "700" }],
+        "display-hero-mobile": ["56px", { lineHeight: "56px", letterSpacing: "0.03em", fontWeight: "400" }],
+        "title-lg": ["20px", { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "700" }]
+      }
+    }
+  }
+};
+</script>
+<style>
+html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto !important;
+  scroll-behavior: smooth;
+  width: 100%;
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: visible !important;
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0e0e0e;
+}
+::-webkit-scrollbar-thumb {
+  background: #353534;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 87, 8, 0.3);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ff5708;
+  box-shadow: 0 0 8px rgba(255, 87, 8, 0.8);
+}
+.orange-logo-filter {
+  filter: brightness(0) saturate(100%) invert(48%) sepia(98%) saturate(2400%) hue-rotate(360deg) brightness(102%) contrast(105%) drop-shadow(0 0 8px rgba(255,87,8,0.6));
+}
+</style></head><body class="bg-background font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/85 backdrop-blur-xl shadow-[0_4px_24px_rgba(0,0,0,0.4)] border-b border-white/5">
+<div class="hidden sm:block bg-surface-container-lowest border-b border-white/5">
+<div class="max-w-7xl mx-auto px-margin flex items-center justify-between h-9">
+<div class="flex items-center gap-6">
+<span class="flex items-center gap-1.5 text-on-surface-variant font-label-caps text-label-caps uppercase tracking-wider">
+<span class="material-symbols-outlined text-[14px] text-primary-container">location_on</span>MMR Complex, Salem, TN
+</span>
+<span class="hidden sm:flex items-center gap-1.5 text-on-surface-variant font-label-caps text-label-caps uppercase tracking-wider">
+<span class="material-symbols-outlined text-[14px] text-primary-container">schedule</span>Mon-Sat: 5:00 AM - 10:30 PM | Sun: 6:00 AM - 8:00 PM
+</span>
+</div>
+<div class="flex items-center gap-4">
+<a class="flex items-center gap-1.5 text-on-surface-variant hover:text-primary font-label-caps text-label-caps uppercase tracking-wider transition-colors" href="tel:+914272445566">
+<span class="material-symbols-outlined text-[14px] text-primary-container">call</span>+91 (0427) 244-5566
+</a>
+<div class="hidden md:flex items-center gap-1.5 pl-3 border-l border-white/10">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse"></span>
+<span class="text-on-surface font-label-caps text-label-caps tracking-widest text-[10px] uppercase">Flagship Club Open</span>
+</div>
+</div>
+</div>
+</div>
+<div class="h-20 max-w-7xl mx-auto px-margin flex items-center justify-between">
+<a class="flex items-center gap-3 group" href="index.html" aria-label="Stackly Fitness Home">
+<div class="h-10 px-2.5 py-1 rounded-xl bg-surface-container-high/80 border border-primary-container/40 flex items-center justify-center shadow-[0_0_20px_rgba(255,87,8,0.25)] group-hover:border-primary-container group-hover:scale-105 transition-all duration-300">
+<img src="stackly logo.webp" alt="Stackly Logo" class="h-7 w-auto object-contain orange-logo-filter"/>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md tracking-wider uppercase text-on-surface leading-none group-hover:text-primary transition-colors">STACKLY</span>
+<span class="font-label-caps text-label-caps text-primary tracking-[0.25em] uppercase leading-none mt-1">FITNESS • SALEM</span>
+</div>
+</a>
+<nav class="hidden lg:flex items-center gap-1">
+<a class="px-4 py-2 rounded-full font-title-md text-title-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" href="index.html">Home</a>
+<a aria-current="page" class="px-4 py-2 rounded-full transition-all bg-surface-container-high text-primary font-title-md" href="about.html">About Us</a>
+<a class="px-4 py-2 rounded-full font-title-md text-title-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" href="program.html">Programs</a>
+<a class="px-4 py-2 rounded-full font-title-md text-title-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" href="membership.html">Membership</a>
+<a class="px-4 py-2 rounded-full font-title-md text-title-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" href="contact.html">Contact</a>
+</nav>
+<div class="flex items-center gap-3">
+<a class="hidden sm:flex items-center gap-2 px-4 py-2.5 rounded-full bg-surface-container-high hover:bg-surface-container-highest text-on-surface transition-colors font-label-md text-label-md border border-white/5" href="login.html">
+<span class="material-symbols-outlined text-[18px] text-primary">account_circle</span>
+<span>Member Portal</span>
+</a>
+<a class="hidden min-[420px]:flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-2.5 rounded-full bg-primary-container hover:bg-tertiary-container text-on-primary-container font-label-md text-label-md uppercase tracking-wider font-bold shadow-[0_0_24px_rgba(255,87,8,0.3)] transition-all hover:scale-[1.02] active:scale-[0.98]" href="signup.html">
+<span>JOIN NOW</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+<button type="button" class="lg:hidden p-2.5 rounded-full bg-surface-container-high text-on-surface hover:text-primary focus:outline-none" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')" aria-label="Toggle Navigation Menu">
+<span class="material-symbols-outlined text-[24px]">menu</span>
+</button>
+</div>
+</div>
+<div id="mobileMenu" class="hidden lg:hidden bg-surface-container-lowest/95 backdrop-blur-2xl border-t border-white/10 px-margin py-4 space-y-2">
+<a class="block px-4 py-2.5 rounded-xl text-on-surface hover:bg-surface-container-high font-title-md " href="index.html">Home</a>
+<a class="block px-4 py-2.5 rounded-xl text-on-surface hover:bg-surface-container-high font-title-md text-primary bg-surface-container-high" href="about.html">About Us</a>
+<a class="block px-4 py-2.5 rounded-xl text-on-surface hover:bg-surface-container-high font-title-md " href="program.html">Programs</a>
+<a class="block px-4 py-2.5 rounded-xl text-on-surface hover:bg-surface-container-high font-title-md " href="membership.html">Membership</a>
+<a class="block px-4 py-2.5 rounded-xl text-on-surface hover:bg-surface-container-high font-title-md " href="contact.html">Contact</a>
+<div class="pt-3 border-t border-white/10 flex flex-col gap-2">
+<a class="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-surface-container-high text-on-surface font-label-md" href="login.html">
+<span class="material-symbols-outlined text-[18px] text-primary">account_circle</span>
+<span>Member Portal</span>
+</a>
+<a class="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-primary-container text-on-primary-container font-label-md font-bold" href="signup.html">
+<span>JOIN NOW</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</header><main class="w-full pt-20 bg-background"><div class="flex flex-col w-full">
+<!-- HERO SECTION -->
+<section class="relative w-full overflow-hidden bg-surface-container-lowest -mt-20 pt-32 pb-space-2xl">
+<div class="absolute inset-0 z-0 pointer-events-none opacity-25">
+<div class="absolute -top-32 right-12 w-[620px] h-[620px] rounded-full bg-primary-container filter blur-[140px]"></div>
+<div class="absolute bottom-0 left-10 w-[420px] h-[420px] rounded-full bg-tertiary filter blur-[180px]"></div>
+</div>
+<div class="relative z-10 max-w-7xl mx-auto px-margin">
+<div class="flex flex-wrap items-center gap-3 mb-space-md">
+<span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface-container-high text-primary font-label-caps text-label-caps uppercase tracking-widest shadow-sm">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-ping"></span>
+          SALEM APEX PERFORMANCE COMPOUND
+        </span>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">EST. 2019 • TAMIL NADU</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-end mb-space-xl">
+<div class="lg:col-span-8">
+<h1 class="font-headline-xl text-headline-xl text-on-surface uppercase tracking-tight leading-none mb-space-md">
+            MORE THAN A GYM. <span class="text-primary-container">A MOVEMENT.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed">
+            Forging elite fitness, mental grit, and physical longevity in the heart of Salem since 2019. Built strictly for athletes, relentless lifters, and individuals pursuing supreme human physical execution.
+          </p>
+</div>
+<div class="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col items-start lg:items-end gap-3 justify-end">
+<a class="px-8 py-3.5 rounded-full bg-primary-container hover:bg-tertiary-container text-on-primary-container font-label-md text-label-md uppercase tracking-wider font-bold shadow-xl transition-all hover:scale-105 active:scale-95 inline-flex items-center gap-2" href="#trial-modal">
+<span>CLAIM ATHLETE PASS</span>
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+</a>
+<span class="font-label-caps text-label-caps text-on-surface-variant tracking-wider uppercase">Zero fluff. 100% Olympic grade infrastructure.</span>
+</div>
+</div>
+<!-- HERO VISUAL BENTO STACK -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-stretch">
+<div class="lg:col-span-8 relative min-h-[460px] rounded-lg overflow-hidden shadow-2xl group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Intense high-contrast shot inside an industrial athletic facility in Salem, showing a muscular female athlete in all black executing an explosive kettlebell swing, with warm cinematic overhead fixtures, dark basalt concrete walls, sweat glistening on skin, chalk dust, and an orange neon line reading GRIT POWER RESILIENCE in the background." style="background-image: url('images/about-hero.webp')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/40 to-transparent"></div>
+<div class="absolute bottom-0 left-0 right-0 p-space-lg flex flex-col md:flex-row items-start md:items-end justify-between gap-4">
+<div>
+<span class="inline-block px-3 py-1 rounded-full bg-surface-container-highest/90 backdrop-blur-md text-primary font-label-caps text-label-caps uppercase tracking-wider mb-2">RAW INTENSITY ZONE</span>
+<p class="font-headline-md text-headline-md text-on-surface uppercase tracking-wide">MMR COMPLEX CAMPUS • HIGH-OUTPUT LAB</p>
+</div>
+<div class="flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container/90 backdrop-blur-md">
+<span class="material-symbols-outlined text-primary-container text-[18px]">verified_user</span>
+<span class="font-label-caps text-label-caps text-on-surface tracking-wider uppercase">IWF Calibrated Plates</span>
+</div>
+</div>
+</div>
+<div class="lg:col-span-4 flex flex-col gap-gutter">
+<div class="flex-1 p-space-lg rounded-lg bg-surface-container-low flex flex-col justify-between shadow-lg">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-primary-container text-[32px]">speed</span>
+<span class="font-label-caps text-label-caps text-primary tracking-widest uppercase">BIOMETRICS RUNTIME</span>
+</div>
+<div class="my-4">
+<div class="font-headline-xl text-headline-xl text-on-surface leading-none">15,000 <span class="font-headline-md text-headline-md text-primary-container">SQ FT</span></div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Multi-level dedicated functional training, Olympic platforms &amp; hydrotherapeutics.</p>
+</div>
+<div class="flex items-center gap-2 pt-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+<span class="font-label-caps text-label-caps text-on-surface uppercase tracking-wider">Tamil Nadu Apex Hub</span>
+</div>
+</div>
+<div class="flex-1 p-space-lg rounded-lg bg-surface-container-high flex flex-col justify-between shadow-lg">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-primary text-[32px]">fitness_center</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant tracking-widest uppercase">DISCIPLINE MATRIX</span>
+</div>
+<div class="my-4">
+<div class="font-headline-xl text-headline-xl text-primary-container leading-none">98.4%</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Sustained retention across 12-month strength cycles since 2019 inception.</p>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary-container h-full w-[98%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- THE STACKLY PHILOSOPHY & CORE PRINCIPLES -->
+<section class="w-full bg-surface py-space-2xl">
+<div class="max-w-7xl mx-auto px-margin">
+<div class="flex items-center gap-2 mb-space-sm">
+<span class="w-6 h-0.5 bg-primary-container"></span>
+<span class="font-label-caps text-label-caps text-primary tracking-widest uppercase">THE ARCHITECTURE OF PROGRESSION</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- LEFT COLUMN -->
+<div class="lg:col-span-6 flex flex-col pr-0 lg:pr-space-md">
+<h2 class="font-headline-xl text-headline-xl text-on-surface uppercase tracking-tight leading-none mb-space-md">
+            BUILT ON SWEAT, SCIENCE &amp; <span class="text-primary-container">RELENTLESS DISCIPLINE.</span>
+</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-space-md leading-relaxed">
+            Conventional gyms peddle soft comfort and endless treadmills. STACKLY was founded in Salem with a singular, non-negotiable intent: assemble a training haven for individuals who desire calculated biological adaptation.
+          </p>
+<p class="font-body-md text-body-md text-on-surface-variant mb-space-lg leading-relaxed">
+            Every square foot of our compound is engineered around mechanical advantage, force dispersion, and metabolic threshold conditioning. We track force-velocity profiles, optimize bar speed, and balance high-strain hypertrophy with biometric recovery.
+          </p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-gutter pt-space-md">
+<div class="p-space-md rounded-DEFAULT bg-surface-container-low shadow-sm">
+<span class="font-headline-lg text-headline-lg text-primary-container block leading-none">10,000+</span>
+<span class="font-label-caps text-label-caps text-on-surface tracking-wider uppercase mt-1 block">Verified PRs Crushed</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Logged on barbell platforms &amp; sprint runs.</p>
+</div>
+<div class="p-space-md rounded-DEFAULT bg-surface-container-low shadow-sm">
+<span class="font-headline-lg text-headline-lg text-on-surface block leading-none">ZERO</span>
+<span class="font-label-caps text-label-caps text-on-surface tracking-wider uppercase mt-1 block">Compromise Standards</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Eleiko, Concept2 &amp; Assault Fitness only.</p>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: VISION & MISSION CARDS -->
+<div class="lg:col-span-6 flex flex-col gap-gutter">
+<!-- VISION CARD -->
+<div class="p-space-xl rounded-lg bg-surface-container flex flex-col shadow-xl relative overflow-hidden group">
+<div class="absolute -right-10 -bottom-10 w-44 h-44 rounded-full bg-primary-container/10 filter blur-3xl pointer-events-none group-hover:bg-primary-container/20 transition-all duration-500"></div>
+<div class="flex items-center justify-between mb-space-md">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[26px]">visibility</span>
+</div>
+<span class="font-label-caps text-label-caps text-primary tracking-widest uppercase">OUR VISION</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface uppercase mb-space-sm">ELEVATE TAMIL NADU STRENGTH CULTURE TO NATIONAL PRESTIGE</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              We reject the status quo of regional fitness. Our aim is to forge Salem as a premier Indian epicenter of athletic potency, where local lifters, track athletes, and executives train with the technological parity of Olympic sports centers.
+            </p>
+</div>
+<!-- MISSION CARD -->
+<div class="p-space-xl rounded-lg bg-surface-container-high flex flex-col shadow-xl relative overflow-hidden group">
+<div class="absolute -right-10 -bottom-10 w-44 h-44 rounded-full bg-tertiary-container/10 filter blur-3xl pointer-events-none group-hover:bg-tertiary-container/20 transition-all duration-500"></div>
+<div class="flex items-center justify-between mb-space-md">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined text-[26px]">flag</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-primary-container tracking-widest uppercase">OUR MISSION</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface uppercase mb-space-sm">OLYMPIC-GRADE TRAINING ACCESSIBLE TO ALL DETERMINED MINDS</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Democratize elite strength coaching, data-driven nutrition, and high-performance recovery. Regardless of entry baseline, any individual willing to yield ego and invest unvarnished effort finds a home here.
+            </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- OUR SALEM JOURNEY (HORIZONTAL 3-STEP TIMELINE) -->
+<section class="w-full bg-surface-container-lowest py-space-2xl">
+<div class="max-w-7xl mx-auto px-margin">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-space-xl">
+<div>
+<div class="flex items-center gap-2 mb-space-xs">
+<span class="w-6 h-0.5 bg-primary-container"></span>
+<span class="font-label-caps text-label-caps text-primary tracking-widest uppercase">ORIGIN &amp; TRAJECTORY</span>
+</div>
+<h2 class="font-headline-xl text-headline-xl text-on-surface uppercase tracking-tight">THE SALEM EVOLUTION</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">
+          From a raw industrial basement garage to Salem's apex 15,000 sq ft conditioning landmark.
+        </p>
+</div>
+<!-- HORIZONTAL TIMELINE -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter relative">
+<!-- 2019 CARD -->
+<div class="flex flex-col rounded-lg bg-surface-container-low p-space-lg shadow-xl relative group hover:bg-surface-container transition-colors">
+<div class="flex items-center justify-between mb-space-md">
+<span class="font-headline-lg text-headline-lg text-primary-container leading-none">2019</span>
+<span class="px-3 py-1 rounded-full bg-surface-container-highest text-on-surface-variant font-label-caps text-label-caps uppercase">ORIGIN PHASE</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface uppercase mb-space-xs">THE UNDERGROUND FORGE</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-space-md">
+            Founded as an uncompromising 1,800 sq ft conditioning bunker at MMR Complex with just 4 calibrated barbells, homemade plyo boxes, and 30 founding athletes chasing genuine physical rigor.
+          </p>
+<div class="mt-auto pt-space-md flex items-center gap-2 text-primary font-label-caps text-label-caps uppercase">
+<span class="material-symbols-outlined text-[18px]">foundation</span>
+<span>Seed Footprint: 1,800 SQ FT</span>
+</div>
+</div>
+<!-- 2021 CARD -->
+<div class="flex flex-col rounded-lg bg-surface-container-low p-space-lg shadow-xl relative group hover:bg-surface-container transition-colors">
+<div class="flex items-center justify-between mb-space-md">
+<span class="font-headline-lg text-headline-lg text-primary leading-none">2021</span>
+<span class="px-3 py-1 rounded-full bg-surface-container-highest text-on-surface-variant font-label-caps text-label-caps uppercase">EXPANSION PHASE</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface uppercase mb-space-xs">BIOMECHANICS LAB &amp; TURF</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-space-md">
+            Integrated Salem's first indoor 40-meter sled sprint lane and dual force-plate screening hardware. Launched data tracking for velocity based training (VBT) and anaerobic threshold testing.
+          </p>
+<div class="mt-auto pt-space-md flex items-center gap-2 text-primary font-label-caps text-label-caps uppercase">
+<span class="material-symbols-outlined text-[18px]">csv</span>
+<span>Sprint Deck &amp; Kinematics Added</span>
+</div>
+</div>
+<!-- 2024 CARD -->
+<div class="flex flex-col rounded-lg bg-surface-container-high p-space-lg shadow-2xl relative group">
+<div class="flex items-center justify-between mb-space-md">
+<span class="font-headline-lg text-headline-lg text-primary-container leading-none">2024</span>
+<span class="px-3 py-1 rounded-full bg-primary-container text-on-primary-container font-label-caps text-label-caps uppercase font-bold">CURRENT APEX</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface uppercase mb-space-xs">THE MULTI-ZONE SUPERHUB</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-space-md">
+            Commissioned our 15,000 sq ft architectural compound. Swedish Eleiko IWF weightlifting platforms, high-performance recovery chambers, hydro plunge tanks, and Nordic dry saunas.
+          </p>
+<div class="mt-auto pt-space-md flex items-center gap-2 text-primary-container font-label-caps text-label-caps uppercase font-bold">
+<span class="material-symbols-outlined text-[18px]">apartment</span>
+<span>15,000 SQ FT Mega Enclave</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FACILITIES & ARSENAL (SPATIAL SHOWCASE) -->
+<section class="w-full bg-surface py-space-2xl">
+<div class="max-w-7xl mx-auto px-margin">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-space-xl">
+<div>
+<div class="flex items-center gap-2 mb-space-xs">
+<span class="w-6 h-0.5 bg-primary-container"></span>
+<span class="font-label-caps text-label-caps text-primary tracking-widest uppercase">ARCHITECTURAL SPECIFICATIONS</span>
+</div>
+<h2 class="font-headline-xl text-headline-xl text-on-surface uppercase tracking-tight">THE SALEM ARSENAL</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">
+          Zero commercial gym compromises. Every zone is outfitted with equipment built to endure generational punishment.
+        </p>
+</div>
+<!-- 3-ZONE SHOWCASE -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- ZONE 01 -->
+<div class="rounded-lg overflow-hidden bg-surface-container-low shadow-xl flex flex-col group">
+<div class="relative h-72 w-full overflow-hidden">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Dramatic interior photography of an Olympic weightlifting deck inside a luxury dark athletic club, calibrated Swedish Eleiko steel barbells and colorful bumper plates neatly racked, oak drop platforms reflecting moody ceiling track lights with warm orange accents, raw concrete industrial pillar architecture." style="background-image: url('images/weightlifting-deck.webp')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low via-transparent to-transparent"></div>
+<span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md text-primary font-label-caps text-label-caps uppercase tracking-wider">ZONE 01</span>
+</div>
+<div class="p-space-lg flex-1 flex flex-col">
+<h3 class="font-headline-md text-headline-md text-on-surface uppercase mb-space-xs">OLYMPIC LIFTING DECK</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-space-md">
+              Eight standalone competition platforms reinforced with acoustic oak centers and heavy rubber landing tiles. Stocked exclusively with Eleiko IWF-certified men’s and women’s bars, calibrated disc racks, and precision collars.
+            </p>
+<div class="mt-auto space-y-1.5 font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-primary-container text-[16px]">check_circle</span>
+<span>Eleiko IWF Competition Plates</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-primary-container text-[16px]">check_circle</span>
+<span>Oak Impact Deceleration Deck</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-primary-container text-[16px]">check_circle</span>
+<span>Heavy Chalk Pods &amp; Belt Racks</span>
+</div>
+</div>
+</div>
+</div>
+<!-- ZONE 02 -->
+<div class="rounded-lg overflow-hidden bg-surface-container-low shadow-xl flex flex-col group">
+<div class="relative h-72 w-full overflow-hidden">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Cinematic angle looking down an indoor 40-meter black synthetic turf sprint track in a moody gym with bright orange perimeter lane stripes, heavy prowler sleds, Concept2 SkiErgs, assault runners lined in precision order, dynamic shadows from exposed steel truss roof." style="background-image: url('images/sprint-track.webp')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low via-transparent to-transparent"></div>
+<span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md text-primary font-label-caps text-label-caps uppercase tracking-wider">ZONE 02</span>
+</div>
+<div class="p-space-lg flex-1 flex flex-col">
+<h3 class="font-headline-md text-headline-md text-on-surface uppercase mb-space-xs">FUNCTIONAL TURF &amp; TRACK</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-space-md">
+              A 40-meter sprint turf strip designed for sled pushes, farmers walks, and multi-planar velocity drills. Flanked by rowers, Concept2 SkiErgs, curve-treadmill assault runners, and battle ropes.
+            </p>
+<div class="mt-auto space-y-1.5 font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-primary-container text-[16px]">check_circle</span>
+<span>40M High-Density Speed Turf</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-primary-container text-[16px]">check_circle</span>
+<span>Assault Fitness Curved Runners</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-primary-container text-[16px]">check_circle</span>
+<span>Custom Welded Sleds up to 350kg</span>
+</div>
+</div>
+</div>
+</div>
+<!-- ZONE 03 -->
+<div class="rounded-lg overflow-hidden bg-surface-container-low shadow-xl flex flex-col group">
+<div class="relative h-72 w-full overflow-hidden">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="High-end luxury thermal recovery suite with dark charcoal stone walls, steam rising from deep stainless steel cold plunge tubs illuminated by underwater warm orange LED downlights, modern cedar dry sauna glass door visible in background, moody minimalist spa aesthetic." style="background-image: url('images/recovery-suite.webp')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low via-transparent to-transparent"></div>
+<span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md text-primary font-label-caps text-label-caps uppercase tracking-wider">ZONE 03</span>
+</div>
+<div class="p-space-lg flex-1 flex flex-col">
+<h3 class="font-headline-md text-headline-md text-on-surface uppercase mb-space-xs">HYDRO &amp; THERMAL SAUNA</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-space-md">
+              Biometric recovery is non-negotiable for sustained hypertrophy and neural adaptation. Features an authentic Finnish dry sauna operating at 85°C paired with twin cold plunge tubs sustained at 7°C.
+            </p>
+<div class="mt-auto space-y-1.5 font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-primary-container text-[16px]">check_circle</span>
+<span>85°C Finnish Cedar Dry Sauna</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-primary-container text-[16px]">check_circle</span>
+<span>7°C Chilled Cold Immersion Tubs</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-primary-container text-[16px]">check_circle</span>
+<span>Pneumatic Compression Boots Suite</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- MASTER CADRE / ELITE TRAINERS -->
+<section class="w-full bg-surface-container-lowest py-space-2xl">
+<div class="max-w-7xl mx-auto px-margin">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-space-xl">
+<div>
+<div class="flex items-center gap-2 mb-space-xs">
+<span class="w-6 h-0.5 bg-primary-container"></span>
+<span class="font-label-caps text-label-caps text-primary tracking-widest uppercase">THE CADRE</span>
+</div>
+<h2 class="font-headline-xl text-headline-xl text-on-surface uppercase tracking-tight">ELITE MASTER COACHES</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">
+          Direct mentorship under certified strength and conditioning specialists with international credentials.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- COACH 01 -->
+<div class="rounded-lg overflow-hidden bg-surface-container-low shadow-xl flex flex-col group">
+<div class="relative h-96 w-full overflow-hidden">
+<div class="w-full h-full bg-cover bg-top transition-transform duration-700 group-hover:scale-105" data-alt="Portrait of South Indian female fitness coach Priya Sundaram in athletic tank top, confident fierce gaze, hair tied back, athletic muscular shoulders, soft directional side lighting casting dramatic shadows in a moody dark gym background with subtle orange rim light." style="background-image: url('images/coach-priya.webp')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low via-surface-container-low/20 to-transparent"></div>
+<div class="absolute top-4 right-4">
+<span class="px-3 py-1 rounded-full bg-primary-container text-on-primary-container font-label-caps text-label-caps font-bold uppercase">HEAD OF PROGRAMMING</span>
+</div>
+</div>
+<div class="p-space-lg flex-1 flex flex-col">
+<h3 class="font-headline-md text-headline-md text-on-surface uppercase mb-0.5">PRIYA SUNDARAM</h3>
+<span class="font-label-caps text-label-caps text-primary tracking-wider uppercase mb-space-sm">CSCS • OLYMPIC LIFTER • 8 YRS EXP</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-space-md">
+              Former national weightlifting contender specializing in barbell biomechanics, female athlete hormone periodization, and raw velocity development.
+            </p>
+<div class="mt-auto pt-space-sm flex items-center justify-between font-label-caps text-label-caps text-on-surface-variant">
+<span>SPECIALTY: SNATCH &amp; CLEAN</span>
+<span class="text-primary-container">400+ ATHLETES COACHED</span>
+</div>
+</div>
+</div>
+<!-- COACH 02 -->
+<div class="rounded-lg overflow-hidden bg-surface-container-low shadow-xl flex flex-col group">
+<div class="relative h-96 w-full overflow-hidden">
+<div class="w-full h-full bg-cover bg-top transition-transform duration-700 group-hover:scale-105" data-alt="Close-up editorial portrait of Indian male strength coach Karthik R. with focused expression, short beard, dark training apparel, standing near heavy weight rack, gym ambient orange and steel grey light reflection, intense athletic energy." style="background-image: url('images/coach-karthik.webp')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low via-surface-container-low/20 to-transparent"></div>
+<div class="absolute top-4 right-4">
+<span class="px-3 py-1 rounded-full bg-surface-container-highest text-on-surface font-label-caps text-label-caps uppercase">LEAD HYPERTROPHY</span>
+</div>
+</div>
+<div class="p-space-lg flex-1 flex flex-col">
+<h3 class="font-headline-md text-headline-md text-on-surface uppercase mb-0.5">KARTHIK R.</h3>
+<span class="font-label-caps text-label-caps text-primary tracking-wider uppercase mb-space-sm">ACE-CPT • KINESIOLOGY SPEC • 10 YRS EXP</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-space-md">
+              Authority on myofibrillar hypertrophy, structural rebalancing, and injury-proof powerlifting cycles for busy executives and competitive lifters.
+            </p>
+<div class="mt-auto pt-space-sm flex items-center justify-between font-label-caps text-label-caps text-on-surface-variant">
+<span>SPECIALTY: HYPERTROPHY &amp; REHAB</span>
+<span class="text-primary-container">SALEM BARBELL SQUAD LEAD</span>
+</div>
+</div>
+</div>
+<!-- COACH 03 -->
+<div class="rounded-lg overflow-hidden bg-surface-container-low shadow-xl flex flex-col group">
+<div class="relative h-96 w-full overflow-hidden">
+<div class="w-full h-full bg-cover bg-top transition-transform duration-700 group-hover:scale-105" data-alt="Athletic portrait of young South Indian male conditioning coach Dharun Natarajan holding a timer stopwatch, athletic posture, sharp jawline, high performance tactical training shirt, dark studio athletic gym setting with backlight orange streaks." style="background-image: url('images/coach-dharun.webp')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low via-surface-container-low/20 to-transparent"></div>
+<div class="absolute top-4 right-4">
+<span class="px-3 py-1 rounded-full bg-surface-container-highest text-on-surface font-label-caps text-label-caps uppercase">METABOLIC DIRECTOR</span>
+</div>
+</div>
+<div class="p-space-lg flex-1 flex flex-col">
+<h3 class="font-headline-md text-headline-md text-on-surface uppercase mb-0.5">DHARUN NATARAJAN</h3>
+<span class="font-label-caps text-label-caps text-primary tracking-wider uppercase mb-space-sm">EXOS PERFORMANCE SPEC • 6 YRS EXP</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-space-md">
+              Pioneer of high-altitude oxygen simulation cycles and VO2 max conditioning protocols designed to elevate lactate clearance and speed endurance.
+            </p>
+<div class="mt-auto pt-space-sm flex items-center justify-between font-label-caps text-label-caps text-on-surface-variant">
+<span>SPECIALTY: HYBRID ENGINE &amp; TURF</span>
+<span class="text-primary-container">EXOS TIER 2 CERTIFIED</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SALEM COMMUNITY (OUR TRIBE & DNA) -->
+<section class="w-full bg-surface py-space-2xl">
+<div class="max-w-7xl mx-auto px-margin">
+<div class="p-space-xl rounded-lg bg-surface-container-low shadow-2xl relative overflow-hidden">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<div class="lg:col-span-6">
+<div class="flex items-center gap-2 mb-space-xs">
+<span class="w-6 h-0.5 bg-primary-container"></span>
+<span class="font-label-caps text-label-caps text-primary tracking-widest uppercase">COMMUNITY RITUAL</span>
+</div>
+<h2 class="font-headline-xl text-headline-xl text-on-surface uppercase tracking-tight mb-space-md">
+              MONTHLY IRON CLASH: <span class="text-primary-container">NO SPECTATORS.</span>
+</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-space-md">
+              On the last Saturday of every calendar month, the music gets cut, chalk fills the air, and our entire member body gathers for the legendary Salem Iron Clash.
+            </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-space-lg">
+              Three team events, peer judging, and calibrated deadlift ladders. Whether you pull 100kg or 300kg, brotherhood and raw encouragement echo through the concrete rafters.
+            </p>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-gutter pt-space-xs">
+<div class="p-space-sm rounded-DEFAULT bg-surface-container">
+<span class="font-headline-md text-headline-md text-on-surface leading-none block">36</span>
+<span class="font-label-caps text-label-caps text-primary tracking-wider uppercase mt-1 block">Clashes Hosted</span>
+</div>
+<div class="p-space-sm rounded-DEFAULT bg-surface-container">
+<span class="font-headline-md text-headline-md text-on-surface leading-none block">1,200+</span>
+<span class="font-label-caps text-label-caps text-primary tracking-wider uppercase mt-1 block">Total Lifters</span>
+</div>
+<div class="p-space-sm rounded-DEFAULT bg-surface-container">
+<span class="font-headline-md text-headline-md text-on-surface leading-none block">100%</span>
+<span class="font-label-caps text-label-caps text-primary tracking-wider uppercase mt-1 block">Salem Pride</span>
+</div>
+</div>
+</div>
+<div class="lg:col-span-6 relative">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="space-y-4">
+<div class="h-56 rounded-DEFAULT overflow-hidden shadow-lg">
+<div class="w-full h-full bg-cover bg-center" data-alt="High-energy black and white photograph with subtle orange lighting of athletes fist-bumping and cheering around a deadlift platform in Salem gym during a team competition, chalk powder frozen in air, genuine smiles and camaraderie." style="background-image: url('images/community-deadlift.webp')"></div>
+</div>
+<div class="h-44 rounded-DEFAULT overflow-hidden shadow-lg">
+<div class="w-full h-full bg-cover bg-center" data-alt="Dynamic shot of four diverse Indian athletes pushing a heavy steel weighted turf sled together, teamwork, sweat, intensity, dark industrial gymnasium background." style="background-image: url('images/team-sled.webp')"></div>
+</div>
+</div>
+<div class="space-y-4 pt-8">
+<div class="h-44 rounded-DEFAULT overflow-hidden shadow-lg">
+<div class="w-full h-full bg-cover bg-center" data-alt="Close up of heavily chalked lifter hands gripping a knurled steel barbell ready for heavy lift, intense athletic focus, low angle view." style="background-image: url('images/chalked-hands.webp')"></div>
+</div>
+<div class="h-56 rounded-DEFAULT overflow-hidden shadow-lg">
+<div class="w-full h-full bg-cover bg-center" data-alt="Group photo of STACKLY Fitness community members in branded athletic wear celebrating together on the turf in Salem, proud expressions holding a custom steel club trophy." style="background-image: url('images/community-trophy.webp')"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- BANNER CTA: BECOME PART OF STACKLY -->
+<section class="w-full bg-surface-container-lowest py-space-2xl relative overflow-hidden" id="trial-modal">
+<div class="absolute inset-0 bg-gradient-to-r from-primary-container/10 via-transparent to-tertiary-container/10 pointer-events-none"></div>
+<div class="max-w-7xl mx-auto px-margin relative z-10">
+<div class="p-space-2xl rounded-lg bg-surface-container flex flex-col lg:flex-row items-center justify-between gap-gutter shadow-2xl">
+<div class="max-w-xl">
+<span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-high text-primary font-label-caps text-label-caps uppercase tracking-wider mb-space-sm">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+            LIMITED INTAKE EACH CYCLE
+          </span>
+<h2 class="font-headline-xl text-headline-xl text-on-surface uppercase tracking-tight mb-space-sm">
+            BECOME PART OF <span class="text-primary-container">STACKLY</span>
+</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-space-md">
+            Step onto the MMR Complex platforms. Experience what happens when unadulterated discipline meets Swedish steel and sports science. Claim your 1-Day Full Arsenal Pass.
+          </p>
+<div class="flex items-center gap-4 text-on-surface-variant font-body-sm text-body-sm">
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-primary-container text-[18px]">lock_reset</span>No Commitment</span>
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-primary-container text-[18px]">verified</span>Full Facility Access</span>
+</div>
+</div>
+<!-- FORM CARD -->
+<div class="w-full lg:max-w-md bg-surface-container-high p-space-lg rounded-DEFAULT shadow-xl">
+<form class="flex flex-col gap-3" onsubmit="event.preventDefault(); document.getElementById('pass-confirmation').classList.remove('hidden');">
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface uppercase tracking-wider mb-1">Athlete Full Name</label>
+<input class="w-full px-4 py-3 rounded-full bg-surface-container-lowest text-on-surface font-body-sm text-body-sm placeholder:text-outline focus:outline-none focus:ring-1 focus:ring-primary-container" placeholder="e.g. Vikram Chandran" required="" type="text"/>
+</div>
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface uppercase tracking-wider mb-1">Salem WhatsApp / Mobile</label>
+<input class="w-full px-4 py-3 rounded-full bg-surface-container-lowest text-on-surface font-body-sm text-body-sm placeholder:text-outline focus:outline-none focus:ring-1 focus:ring-primary-container" placeholder="+91 98420 XXXXX" required="" type="tel"/>
+</div>
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface uppercase tracking-wider mb-1">Primary Discipline Focus</label>
+<select class="w-full px-4 py-3 rounded-full bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary-container">
+<option>Olympic Lifting &amp; Strength</option>
+<option>Hypertrophy &amp; Body Recomp</option>
+<option>Functional Turf &amp; Conditioning</option>
+<option>Executive Longevity &amp; Thermal Care</option>
+</select>
+</div>
+<button class="mt-2 w-full py-3.5 px-6 rounded-full bg-primary-container hover:bg-tertiary-container text-on-primary-container font-label-md text-label-md uppercase tracking-wider font-bold shadow-xl transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2" type="submit">
+<span>REQUEST TRIAL PASS</span>
+<span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+</form>
+<div class="hidden mt-3 p-3 rounded-DEFAULT bg-surface-container-lowest text-primary font-body-sm text-body-sm text-center" id="pass-confirmation">
+            Pass request registered. A Stackly coach will WhatsApp confirmation coordinates within 2 hours.
+          </div>
+</div>
+</div>
+</div>
+</section>
+</div></main><footer class="w-full bg-surface-container-lowest text-on-surface pt-space-2xl pb-space-xl"><div class="max-w-7xl mx-auto px-margin"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-gutter mb-space-2xl"><div class="lg:col-span-4 flex flex-col items-start pr-0 lg:pr-space-md"><a href="index.html" class="flex items-center gap-3 mb-space-md group"><div class="h-9 px-2 py-1 rounded-xl bg-surface-container border border-primary-container/30 flex items-center justify-center"><img src="stackly logo.webp" alt="Stackly Logo" class="h-6 w-auto orange-logo-filter"/></div><span class="font-headline-md text-headline-md tracking-wider uppercase text-on-surface group-hover:text-primary transition-colors">STACKLY FITNESS</span></a><p class="font-body-md text-body-md text-on-surface-variant mb-space-lg leading-relaxed">Salem's apex conditioning enclave. Merging brutalist athletic architecture, Olympic-grade iron, and biometric recovery for dedicated high-performers.</p><div class="flex items-center gap-3"><a aria-label="Club Community Portal" class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface hover:text-primary-container hover:bg-surface-container-high transition-colors" href="404.html"><span class="material-symbols-outlined text-[20px]">sports_gymnastics</span></a><a aria-label="Club Stream" class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface hover:text-primary-container hover:bg-surface-container-high transition-colors" href="404.html"><span class="material-symbols-outlined text-[20px]">play_circle</span></a><a aria-label="Broadcast Hub" class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface hover:text-primary-container hover:bg-surface-container-high transition-colors" href="404.html"><span class="material-symbols-outlined text-[20px]">podcasts</span></a><a aria-label="Location Feed" class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface hover:text-primary-container hover:bg-surface-container-high transition-colors" href="404.html"><span class="material-symbols-outlined text-[20px]">public</span></a></div></div><div class="lg:col-span-2 flex flex-col"><span class="font-label-caps text-label-caps text-primary tracking-widest uppercase mb-space-md">PROGRAMS</span><ul class="space-y-space-sm font-body-sm text-body-sm"><li class="text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer"><a href="404.html" class="hover:text-primary transition-colors">Hypertrophy Matrix</a></li><li class="text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer"><a href="404.html" class="hover:text-primary transition-colors">Olympic Barbell Club</a></li><li class="text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer"><a href="404.html" class="hover:text-primary transition-colors">High-Altitude HIIT</a></li><li class="text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer"><a href="404.html" class="hover:text-primary transition-colors">Cryo &amp; Recovery Lab</a></li><li class="text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer"><a href="404.html" class="hover:text-primary transition-colors">Private 1:1 Coaching</a></li></ul></div><div class="lg:col-span-2 flex flex-col"><span class="font-label-caps text-label-caps text-primary tracking-widest uppercase mb-space-md">EXPEDITIONS</span><ul class="space-y-space-sm font-body-sm text-body-sm"><li class="text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer"><a href="404.html" class="hover:text-primary transition-colors">The Salem Flagship</a></li><li class="text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer"><a href="404.html" class="hover:text-primary transition-colors">Tiers &amp; Passes</a></li><li class="text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer"><a href="404.html" class="hover:text-primary transition-colors">Trainer Roster</a></li><li class="text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer"><a href="404.html" class="hover:text-primary transition-colors">Corporate Fitness</a></li><li class="text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer"><a href="404.html" class="hover:text-primary transition-colors">Member Guidelines</a></li></ul></div><div class="lg:col-span-4 flex flex-col"><span class="font-label-caps text-label-caps text-primary tracking-widest uppercase mb-space-md">SALEM FLAGSHIP ENCLAVE</span><div class="p-space-md rounded-DEFAULT bg-surface-container mb-space-md"><div class="flex items-start gap-2.5 mb-2"><span class="material-symbols-outlined text-primary-container text-[20px] shrink-0 mt-0.5">pin_drop</span><div class="font-body-sm text-body-sm text-on-surface"><p class="font-bold text-on-surface">MMR Complex, Meyyanur Bypass Road</p><p class="text-on-surface-variant">Salem, Tamil Nadu 636004</p></div></div><p class="font-body-sm text-body-sm text-on-surface-variant pl-7">Tel: +91 (0427) 244-5566 • info@stacklyfitness.in</p></div><div><span class="font-label-caps text-label-caps text-on-surface uppercase tracking-wider block mb-2">THE INTEL BULLETIN</span><form data-validate class="flex items-center gap-2" novalidate><input class="flex-1 bg-surface-container-high px-4 py-2.5 rounded-full font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-1 focus:ring-primary-container" id="bulletinEmail" name="email" required placeholder="Enter your executive email" type="email"/><button class="px-5 py-2.5 rounded-full bg-primary-container text-on-primary-container font-label-caps text-label-caps uppercase font-bold hover:bg-tertiary-container transition-colors" type="submit">JOIN</button></form></div></div></div><div class="pt-space-lg flex flex-col md:flex-row items-center justify-between gap-4 font-body-sm text-body-sm text-on-surface-variant"><div class="flex items-center gap-6"><span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-primary-container">verified</span>Tamil Nadu Reg. Premium Facility</span><span>© 2025 STACKLY FITNESS PVT LTD. ALL RIGHTS RESERVED.</span></div><div class="flex items-center gap-6 font-label-caps text-label-caps uppercase tracking-wider"><a class="hover:text-on-surface transition-colors" href="404.html">Privacy Policy</a><a class="hover:text-on-surface transition-colors" href="404.html">Terms of Tier Access</a><a class="hover:text-on-surface transition-colors" href="404.html">Facility Conduct</a></div></div></div></footer><script src="validation.js"></script>
+</body></html>
